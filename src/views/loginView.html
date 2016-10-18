@@ -1,0 +1,15 @@
+<md-content flex> 
+  <div layout-gt-sm="row" layout="column" layout-margin layout-align="center center">
+      <form name="loginForm">
+        <md-input-container class="md-block">
+            <label>User Name</label>
+            <input required name="userName" ng-model="menu.loginModel.name">
+            <div ng-messages="loginForm.userName.$error">
+               <div ng-message="required">This is required.</div>
+            </div>
+        </md-input-container>
+          <md-button type="submit" ng-disabled=!loginForm.$valid ng-click="menu.login()" class="md-raised md-primary">login</md-button>
+      </form>
+  </div>
+  <pre>{{ menu.schema | json }}</pre>
+</md-content>

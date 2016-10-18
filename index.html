@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="/public/js/require/main.js"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min.css" />
+	<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+	<title>LAN CRUD</title>
+</head>
+
+<body>
+	<div ng-controller="MenuController as menu">
+		<md-content class="md-padding" layout="column">
+			<md-toolbar class="md-info">
+				<div class="md-toolbar-tools">
+					<h2 class="md-flex">Lovefield Angular CRUD</h2>
+				</div>
+			</md-toolbar>
+
+			<div ng-if="menu.existUser">
+				<md-fab-speed-dial md-direction="down" md-open="false" class="md-scale md-fab-top-right" ng-class="{ 'md-hover-full': false }">
+					<!--ng-mouseenter="demo.isOpen=true" ng-mouseleave="demo.isOpen=false"> -->
+					<md-fab-trigger>
+						<md-button aria-label="menu" class="md-fab md-warn">
+							<md-tooltip md-direction="top" md-visible="tooltipVisible">Menu</md-tooltip>
+							<md-icon md-svg-src="public/img/icons/menu.svg" aria-label="menu"></md-icon>
+						</md-button>
+					</md-fab-trigger>
+
+					<md-fab-actions>
+						<md-button aria-label="Quit" class="md-fab md-raised md-mini" ng-click="demo.openDialog($event, item)">
+							<md-tooltip md-direction="down" md-visible="tooltipVisible" md-autohide="false">
+								Exit
+							</md-tooltip>
+							<md-icon aria-label="exit">remove</md-icon>
+						</md-button>
+					</md-fab-actions>
+				</md-fab-speed-dial>
+			</div>
+
+			<div ui-view=""></div>
+	</div>
+
+	</md-content>
+
+</body>
+
+</html>

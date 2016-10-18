@@ -1,0 +1,16 @@
+{
+  "name": "mean-crud",
+  "version": "1.0.0",
+  "description": "LEAN Crud App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vagnerlucas",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.17.3",
+    "gulp": "^3.9.1"
+  }
+}

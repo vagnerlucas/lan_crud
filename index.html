@@ -17,26 +17,7 @@
 				</div>
 			</md-toolbar>
 
-			<div ng-if="menu.existUser">
-				<md-fab-speed-dial md-direction="down" md-open="false" class="md-scale md-fab-top-right" ng-class="{ 'md-hover-full': false }">
-					<!--ng-mouseenter="demo.isOpen=true" ng-mouseleave="demo.isOpen=false"> -->
-					<md-fab-trigger>
-						<md-button aria-label="menu" class="md-fab md-warn">
-							<md-tooltip md-direction="top" md-visible="tooltipVisible">Menu</md-tooltip>
-							<md-icon md-svg-src="public/img/icons/menu.svg" aria-label="menu"></md-icon>
-						</md-button>
-					</md-fab-trigger>
-
-					<md-fab-actions>
-						<md-button aria-label="Quit" class="md-fab md-raised md-mini" ng-click="demo.openDialog($event, item)">
-							<md-tooltip md-direction="down" md-visible="tooltipVisible" md-autohide="false">
-								Exit
-							</md-tooltip>
-							<md-icon aria-label="exit">remove</md-icon>
-						</md-button>
-					</md-fab-actions>
-				</md-fab-speed-dial>
-			</div>
+			<menu-options></menu-options>
 
 			<div ui-view=""></div>
 	</div>

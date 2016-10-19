@@ -8,6 +8,9 @@
   },
   "author": "vagnerlucas",
   "license": "MIT",
+  "repository": {
+    "url": "https://github.com/vagnerlucas/lan_crud"
+  },
   "dependencies": {},
   "devDependencies": {
     "browser-sync": "^2.17.3",

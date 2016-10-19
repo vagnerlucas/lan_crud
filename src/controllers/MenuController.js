@@ -4,9 +4,8 @@
         
         let vm = this;
         let loginModel = { name: '' }
-        vm.existUser = false
 
-        let saveUser = (user) => {
+        const saveUser = (user) => {
             return DBService.add('User', user)
         }
 
@@ -14,7 +13,6 @@
             vm.loginModel.id = 1
             saveUser(vm.loginModel).then(() => {
                 $rootScope.existUser = true
-                vm.existUser = true
                 $state.go('home')
             }, (e) => { alert(`can\'t go any further ${e}`) })
         }
@@ -24,6 +22,6 @@
 
     require(['app'], function(app) { app.controller('MenuController', MenuController)})
 
-    define(['app', 'services/dbService'], function() { return MenuController })
+    define(['app', 'services/dbService', 'directives/menuOptionsDirective'], function() { return MenuController })
 
 })()

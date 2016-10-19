@@ -1,5 +1,9 @@
 (function(){
-    function HomeController() {
+    function HomeController($rootScope) {
+        let vm = this
+        
+        vm.existUser = $rootScope.existUser
+        
         console.info('home controller')
     }
 

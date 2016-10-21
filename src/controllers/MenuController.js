@@ -13,6 +13,7 @@
             vm.loginModel.id = 1
             saveUser(vm.loginModel).then(() => {
                 $rootScope.existUser = true
+                vm.loggedUserName = vm.loginModel.name
                 $state.go('home')
             }, (e) => { alert(`can\'t go any further ${e}`) })
         }

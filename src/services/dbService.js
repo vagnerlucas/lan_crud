@@ -64,28 +64,28 @@
 
             return schema.connect().then((db) => {
                 try {
-                    console.log(db.getSchema().table('User'))
-                }
-                catch (e) {
+                    try {
+                        ['Contact', 'Category', 'User'].forEach((e, i) => {
+                            let table = db.getSchema().table(e)
+                            db.delete().from(table).exec()
+                        })
+                    } catch (e) {
+                        console.log(e)
+                    } finally {
+                        return Promise.resolve(db)
+                    }
+                } catch (e) {
                     console.log(e)
                     throw e
                 }
+            }).then((db) => {
+                return setTimeout(() => {
+                    db.close()
+                    return Promise.resolve(true)
+                }, 1000)
                 
-                // try {
-                //     ['Contact', 'Category', 'User'].forEach((e) => {
-                //         console.log(e)
-                //         db.dropTable(e)
-                //     })
-                // } catch (e) {
-                //     console.log(e)
-                // } finally {
-                //     return Promise.resolve(true)
-                // }
             })
-
-
         }
-
     }
 
     dbService.$inject = ['db']

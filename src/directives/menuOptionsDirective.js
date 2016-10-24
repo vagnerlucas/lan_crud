@@ -24,6 +24,8 @@
                                 .then(() => {
                                     const msg = 'Database erased'
                                     const title = 'Done'
+                                    $rootScope.existUser = false
+                                    scope.userName = null
                                     dialogService.showMessage(title, msg).then(() => {
                                         $state.go('login')
                                     })

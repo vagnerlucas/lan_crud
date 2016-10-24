@@ -17,11 +17,11 @@
 		</md-fab-trigger>
 
 		<md-fab-actions>
-			<md-button aria-label="Quit" class="md-fab md-raised md-mini" ng-click="demo.openDialog($event, item)">
+			<md-button aria-label="Quit" class="md-fab md-raised md-mini" ng-click="exitAndDestroy($event)">
 				<md-tooltip md-direction="down" md-visible="tooltipVisible" md-autohide="false">
-					Exit
+					Exit & Destroy
 				</md-tooltip>
-				<md-icon aria-label="exit">remove</md-icon>
+				<md-icon aria-label="exit">clear</md-icon>
 			</md-button>
 		</md-fab-actions>
 	</md-fab-speed-dial>

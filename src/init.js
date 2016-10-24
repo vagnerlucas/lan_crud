@@ -1,8 +1,8 @@
 (function () {
 
-    init.$inject = ['$rootScope', '$location', 'db', '$state', 'DBService']
+    init.$inject = ['$rootScope', '$location', '$state', 'DBService']
 
-    function init($rootScope, $location, dbProvider, $state, DBService) {
+    function init($rootScope, $location, $state, DBService) {
 
         const checkUser = () => {
 
@@ -43,7 +43,7 @@
         })
     }
 
-    define(['angularAMD', 'providers/dbProvider', 'services/dbService'], function () {
+    define(['angularAMD', 'services/dbService'], function () {
         return init
     })
 

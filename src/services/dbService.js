@@ -5,7 +5,7 @@
         let vm = this
 
         vm.getById = (model, id) => {
-            
+
             const schema = dbProvider.schema
             let dataBase
 
@@ -33,24 +33,22 @@
             let dataBase
 
             return schema.connect().then((db) => {
-                dataBase = db
-                let table = db.getSchema().table(model)
-                let row = table.createRow(data)
-                // let row = userTable.createRow({
-                //     'id': 1,
-                //     'name': user.trim()
-                // })
-                return db.insert().into(table).values([row]).exec()
-            })
-            .then(() => {
-                dataBase.close()
-                return this 
-            }, (e) => { 
-                dataBase.close()
-                return Promise.reject(e) 
-            })
-
-
+                    dataBase = db
+                    let table = db.getSchema().table(model)
+                    let row = table.createRow(data)
+                        // let row = userTable.createRow({
+                        //     'id': 1,
+                        //     'name': user.trim()
+                        // })
+                    return db.insert().into(table).values([row]).exec()
+                })
+                .then(() => {
+                    dataBase.close()
+                    return this
+                }, (e) => {
+                    dataBase.close()
+                    return Promise.reject(e)
+                })
         }
 
         vm.del = (id) => {
@@ -58,6 +56,33 @@
         }
 
         vm.update = (model, id, data) => {
+
+        }
+
+        vm.clearData = () => {
+            const schema = dbProvider.schema
+
+            return schema.connect().then((db) => {
+                try {
+                    console.log(db.getSchema().table('User'))
+                }
+                catch (e) {
+                    console.log(e)
+                    throw e
+                }
+                
+                // try {
+                //     ['Contact', 'Category', 'User'].forEach((e) => {
+                //         console.log(e)
+                //         db.dropTable(e)
+                //     })
+                // } catch (e) {
+                //     console.log(e)
+                // } finally {
+                //     return Promise.resolve(true)
+                // }
+            })
+
 
         }
 

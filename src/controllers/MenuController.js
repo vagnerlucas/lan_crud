@@ -1,9 +1,11 @@
-(function() {
+(function () {
 
-    function MenuController($state, $rootScope, DBService) {
-        
+    function MenuController($state, $rootScope, $mdDialog, DBService) {
+
         let vm = this;
-        let loginModel = { name: '' }
+        let loginModel = {
+            name: ''
+        }
 
         const saveUser = (user) => {
             return DBService.add('User', user)
@@ -15,14 +17,20 @@
                 $rootScope.existUser = true
                 vm.loggedUserName = vm.loginModel.name
                 $state.go('home')
-            }, (e) => { alert(`can\'t go any further ${e}`) })
+            }, (e) => {
+                alert(`can\'t go any further ${e}`)
+            })
         }
     }
 
-    MenuController.$inject = ['$state', '$rootScope', 'DBService']
+    MenuController.$inject = ['$state', '$rootScope', '$mdDialog', 'DBService']
 
-    require(['app'], function(app) { app.controller('MenuController', MenuController)})
+    require(['app'], function (app) {
+        app.controller('MenuController', MenuController)
+    })
 
-    define(['app', 'services/dbService', 'directives/menuOptionsDirective'], function() { return MenuController })
+    define(['app', 'services/dbService', 'directives/menuOptionsDirective'], function () {
+        return MenuController
+    })
 
 })()

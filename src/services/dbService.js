@@ -70,19 +70,19 @@
                             db.delete().from(table).exec()
                         })
                     } catch (e) {
-                        console.log(e)
+                        console.error(e)
                     } finally {
                         return Promise.resolve(db)
                     }
                 } catch (e) {
-                    console.log(e)
+                    console.error(e)
                     throw e
                 }
             }).then((db) => {
                 return setTimeout(() => {
                     db.close()
                     return Promise.resolve(true)
-                }, 1000)
+                }, 500)
                 
             })
         }

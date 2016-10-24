@@ -19,21 +19,28 @@
             url: '/home'
         })
 
+        const homeContacts = angularAMD.route({
+            url: '/contacts',
+            controllerAs: 'contacts',
+            controllerUrl: 'controllers/HomeContactsController',
+            templateUrl: '/src/views/include/homeContactsView.html',
+            // views: {
+            //     '': angularAMD.route({
+                    
+            //     })
+            // }
+        })
+
         const login = angularAMD.route({
             templateUrl: '/src/views/loginView.html',
             url: '/login'
         })
 
-        const config = angularAMD.route({
-            template: '<md-content><h3>Ok</h3></md-content>',
-            url: '/config'
-        })
-
         $stateProvider
             .state('/', main)
             .state('home', home)
+            .state('home.contacts', homeContacts)
             .state('login', login)
-            .state('config', config)
 
         $urlRouterProvider.otherwise('/');
         $urlMatcherFactoryProvider.caseInsensitive(true);

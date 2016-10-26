@@ -68,8 +68,8 @@
         app.directive('menuOptions', menuOptions)
     })
 
-    define(['app', 'services/DBService', 'services/dialogService'], function () {
+    define(['app', 'services/dbService', 'services/dialogService'], function () {
         return menuOptions
     })
-
+    
 })()

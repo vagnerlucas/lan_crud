@@ -24,11 +24,13 @@
             controllerAs: 'contacts',
             controllerUrl: 'controllers/HomeContactsController',
             templateUrl: '/src/views/include/homeContactsView.html',
-            // views: {
-            //     '': angularAMD.route({
-                    
-            //     })
-            // }
+        })
+
+        const homeCategories = angularAMD.route({
+            url: '/categories',
+            controllerAs: 'Categories',
+            controllerUrl: 'controllers/HomeCategoriesController',
+            templateUrl: '/src/views/include/homeCategoriesView.html',
         })
 
         const login = angularAMD.route({
@@ -40,6 +42,7 @@
             .state('/', main)
             .state('home', home)
             .state('home.contacts', homeContacts)
+            .state('home.categories', homeCategories)
             .state('login', login)
 
         $urlRouterProvider.otherwise('/');

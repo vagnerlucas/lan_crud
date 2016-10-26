@@ -22,7 +22,7 @@
         app.service('dialogService', dialogService)
     })
 
-    define(['app', 'services/DBService'], function () {
+    define(['app', 'services/dbService'], function () {
         return dialogService
     })
 

@@ -1,0 +1,26 @@
+<md-card>
+  <md-card-title>
+    <md-card-title-media>
+      <div class="md-media-sm card-media" layout>
+        <!--<md-icon md-svg-icon="person" style="color:grey"></md-icon>-->
+        <img ng-src="/assets/img/vrl.jpg" class="md-avatar user-image" alt="{{contact.value}}" />
+      </div>
+    </md-card-title-media>
+    <md-card-title-text>
+      <span class="md-headline">{{contact.name}}</span>
+      <span class="md-subhead description">{{contact.description}}</span>
+    </md-card-title-text>
+    <md-card-actions layout="row" layout-align="end center">
+          <md-card-icon-actions>
+            <md-button class="md-icon-button" aria-label="icon" ng-click="contact.click()">
+              <md-icon class="material-icons" >{{ contact.fav ? 'favorite' : 'favorite_border'}}</md-icon>
+            </md-button>
+          </md-card-icon-actions>
+          <md-card-icon-actions>
+            <md-button class="md-icon-button" aria-label="icon" ng-click="contact.remove()">
+              <md-icon class="material-icons" >clear</md-icon>
+            </md-button>
+          </md-card-icon-actions>
+    </md-card-actions>
+  </md-card-title>
+</md-card>

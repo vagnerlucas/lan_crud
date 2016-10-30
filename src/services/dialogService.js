@@ -1,5 +1,7 @@
 (function () {
 
+    'use strict'
+
     function dialogService($mdDialog) {
         let vm = this
 
@@ -15,6 +17,10 @@
             ok = ok || 'Ok'
             const alert = $mdDialog.alert().title(title).textContent(msg).ok(ok)
             return $mdDialog.show(alert)
+        }
+
+        vm.showCustomDialog = ($event, options) => {
+
         }
     }
 

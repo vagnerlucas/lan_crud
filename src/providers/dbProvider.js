@@ -1,5 +1,7 @@
 (function () {
 
+    'use strict'
+    
     function db() {
 
         let vm = this

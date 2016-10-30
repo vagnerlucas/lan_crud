@@ -1,4 +1,7 @@
 (function () {
+
+    'use strict'
+    
     function HomeController($rootScope) {
         let vm = this
 

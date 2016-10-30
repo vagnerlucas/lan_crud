@@ -1,5 +1,7 @@
 (function () {
 
+    'use strict'
+
     function MenuController($state, $rootScope, $mdDialog, DBService) {
 
         let vm = this;
@@ -16,7 +18,7 @@
             saveUser(vm.loginModel).then(() => {
                 $rootScope.existUser = true
                 vm.loggedUserName = vm.loginModel.name
-                $state.go('home')
+                $state.go('home.contacts')
             }, (e) => {
                 alert(`can\'t go any further ${e}`)
             })

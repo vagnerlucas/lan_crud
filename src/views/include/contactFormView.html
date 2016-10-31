@@ -12,9 +12,21 @@
 
     <md-dialog-content>
       <div class="md-dialog-content">
-        <h2></h2>
-        <p>
-        </p>
+        <form name="contactForm">
+          <div layout-gt-xs="row">
+        <md-input-container class="md-block">
+            <label>Contact Name</label>
+            <input required name="contactName" ng-model="contactCtrl.contactModel.name">
+            <div ng-messages="contactForm.name.$error">
+               <div ng-message="required">This is required.</div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+            <label>Contact Description</label>
+            <input name="contactDescription" ng-model="contactCtrl.contactModel.description">
+        </md-input-container>
+        </div>
+        </form>
       </div>
     </md-dialog-content>
 

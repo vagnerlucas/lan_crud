@@ -25,6 +25,7 @@
             addColumn('name', lf.Type.STRING).
             addColumn('email', lf.Type.STRING).
             addColumn('description', lf.Type.STRING).
+            addColumn('birthdate', lf.Type.DATE_TIME).
             addColumn('starred', lf.Type.BOOLEAN).
             addColumn('picture', lf.Type.OBJECT).
             addNullable(['picture']).

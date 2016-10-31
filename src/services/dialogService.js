@@ -19,8 +19,24 @@
             return $mdDialog.show(alert)
         }
 
-        vm.showCustomDialog = ($event, options) => {
+        vm.showCustomDialog = (options) => {
+            const title = options.title
+            const ok = options.ok || 'Ok'
+            const cancel = options.cancel || 'Cancel'
+            let dlgOpts = options.dlgOpts
+            
+            if (!dlgOpts)
+                return Promise.reject('No dialog options found')
 
+            return $mdDialog.show(dlgOpts)
+        }
+
+        vm.close = () => {
+            $mdDialog.close()
+        }
+
+        vm.cancel = () => {
+            $mdDialog.cancel()
         }
     }
 

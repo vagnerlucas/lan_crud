@@ -2,9 +2,9 @@
   <form ng-cloak>
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <h2>Conctact</h2>
+        <h2>Contact</h2>
         <span flex></span>
-        <md-button class="md-icon-button" ng-click="cancel()">
+        <md-button class="md-icon-button" ng-click="contactCtrl.cancel()">
           <md-icon aria-label="Close">close</md-icon>
         </md-button>
       </div>
@@ -19,10 +19,10 @@
     </md-dialog-content>
 
     <md-dialog-actions layout="row">
-      <md-button ng-click="cancel()">
+      <md-button ng-click="contactCtrl.cancel()">
        Cancel
       </md-button>
-      <md-button ng-click="save()">
+      <md-button ng-click="contactCtrl.test('test')">
         Save
       </md-button>
     </md-dialog-actions>

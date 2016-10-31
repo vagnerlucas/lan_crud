@@ -26,7 +26,21 @@
         }
 
         vm.list = (model) => {
+            
+            const schema = dbProvider.schema
+            let dataBase
 
+            return schema.connect().then((db) => {
+                dataBase = db
+                let table = db.getSchema().table(model)
+                return db.select().from(table).exec()
+            }).then((data) => {
+                dataBase.close()
+                return Promise.resolve(data)
+            }, (e) => { 
+                dataBase.close()
+                return Promise.reject(e)
+            })
         }
 
         vm.add = (model, data) => {

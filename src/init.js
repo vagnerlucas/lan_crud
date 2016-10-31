@@ -32,7 +32,7 @@
 
                 if ($rootScope.existUser)
                     if (next.url === '/login' || next.url === '/')
-                        $state.go('home')
+                        $state.go('home.contacts')
                     else
                         $state.go(next, current)
                 else

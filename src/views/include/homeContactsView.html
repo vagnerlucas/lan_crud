@@ -1,9 +1,9 @@
 <style>
 div.overlay {
-  background-color:rgba(210, 182, 210, 0.4);
+  background-color:rgba(229, 235, 245, 0.4);
   color: rgba(0,0,0,0.7);
   font-weight:bold;
-  border: 2px solid rgba(210, 182, 210, 0.4);
+  border: 2px solid rgba(229, 235, 245, 0.4);
   border-radius: 10px;
 }
 </style>
@@ -15,7 +15,10 @@ div.overlay {
 			<md-icon aria-label="new">add</md-icon>
 		</md-button>
 	  </div>
-    <div class="list-categories">
-      
+    <div ng-if="!contacts.contactList" layout-align="center center">
+      	  <h2 class="md-flex">No contacts to display</h2>
+    </div>
+    <div ng-if="contacts.contactList" class="animate-repeat" ng-repeat="c in contacts.contactList track by c.id">
+        <contact id={{c.id}} name={{c.name}}></contact>
     </div>
 </md-content>

@@ -7,7 +7,7 @@
 
         let dialogCtrl = vm
 
-        vm.contactList = null
+        vm.contactList = []
 
         dialogCtrl.cancel = () => {
             dialogService.cancel()
@@ -32,6 +32,8 @@
 
         vm.createContact = () => {
             dialogService.showCustomDialog(vm.contactDlgOpt)
+                .then((data) => { console.log(data) },
+                      () => { vm.getContactList() })
             console.log('createContact')
         }
 
@@ -51,7 +53,7 @@
             return vm.contactList
         }
 
-        vm.getContactList()
+        //vm.getContactList()
 
     }
 

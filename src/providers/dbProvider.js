@@ -62,9 +62,11 @@
             })
         }
 
+        
+
         vm.$get = () => {
             return {
-                schema: schemaBuilder
+                dbPromise: Promise.resolve(schemaBuilder.connect()).then((db) => { return Promise.resolve(db) })
             }
         }
     }

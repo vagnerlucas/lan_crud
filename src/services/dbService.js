@@ -8,63 +8,52 @@
 
         vm.getById = (model, id) => {
 
-            const schema = dbProvider.schema
-            let dataBase
-
-            return schema.connect().then((db) => {
-                    dataBase = db
-                    let table = db.getSchema().table(model)
-                    return dataBase.select().from(table).where(table.id.eq(id)).exec()
-                })
-                .then((r) => {
-                    dataBase.close()
-                    return Promise.resolve(r)
-                }, (e) => {
-                    dataBase.close()
-                    return Promise.reject(null)
-                })
+            return dbProvider.dbPromise.then((dataBase) => { 
+            
+            const table = dataBase.getSchema().table(model)
+                        
+            return dataBase.select()
+                    .from(table)
+                    .where(table.id.eq(id))
+                    .exec()
+                    .then(
+                        (r) => { return Promise.resolve(r) },
+                        (e) => { return Promise.reject(null) }
+                    )
+            })
         }
 
         vm.list = (model) => {
             
-            const schema = dbProvider.schema
-            let dataBase
-
-            return schema.connect().then((db) => {
-                dataBase = db
-                let table = db.getSchema().table(model)
-                return db.select().from(table).exec()
-            }).then((data) => {
-                dataBase.close()
-                return Promise.resolve(data)
-            }, (e) => { 
-                dataBase.close()
-                return Promise.reject(e)
+            return dbProvider.dbPromise.then((dataBase) => {
+                
+                const table = dataBase.getSchema().table(model)
+                
+                return dataBase.select()
+                               .from(table)
+                               .exec()
+                               .then(
+                                   (data) => { return Promise.resolve(data) },
+                                   (err) => { return Promise.reject(err) }
+                               )
             })
         }
 
         vm.add = (model, data) => {
 
-            const schema = dbProvider.schema
-            let dataBase
-
-            return schema.connect().then((db) => {
-                    dataBase = db
-                    let table = db.getSchema().table(model)
-                    let row = table.createRow(data)
-                        // let row = userTable.createRow({
-                        //     'id': 1,
-                        //     'name': user.trim()
-                        // })
-                    return db.insert().into(table).values([row]).exec()
-                })
-                .then(() => {
-                    dataBase.close()
-                    return this
-                }, (e) => {
-                    dataBase.close()
-                    return Promise.reject(e)
-                })
+            return dbProvider.dbPromise.then((dataBase) => {
+                const table = dataBase.getSchema().table(model)
+                const row = table.createRow(data)
+                
+                return dataBase.insert()
+                               .into(table)
+                               .values([row])
+                               .exec()
+                               .then(
+                                   () => { return this },
+                                   (err) => { Promise.reject(err) }
+                               )
+            })
         }
 
         vm.del = (id) => {
@@ -76,30 +65,25 @@
         }
 
         vm.clearData = () => {
-            const schema = dbProvider.schema
-
-            return schema.connect().then((db) => {
+            
+            return dbProvider.dbPromise.then((dataBase) => {
                 try {
-                    try {
                         ['Contact', 'Category', 'User'].forEach((e, i) => {
-                            let table = db.getSchema().table(e)
-                            db.delete().from(table).exec()
+                            let table = dataBase.getSchema().table(e)
+                            dataBase.delete().from(table).exec()
                         })
-                    } catch (e) {
+                    } 
+                    catch (e) {
                         console.error(e)
-                    } finally {
-                        return Promise.resolve(db)
                     }
-                } catch (e) {
-                    console.error(e)
-                    throw e
-                }
-            }).then((db) => {
+                    finally {
+                        return Promise.resolve(dataBase)
+                    }
+            })
+            .then((db) => {
                 return setTimeout(() => {
-                    db.close()
                     return Promise.resolve(true)
-                }, 500)
-                
+                }, 100)
             })
         }
     }

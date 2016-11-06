@@ -8,6 +8,9 @@ require.config({
         'angular-material': ['//cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min'],
         'ui-router': ['//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min'],
         'lovefield': ['//cdnjs.cloudflare.com/ajax/libs/lovefield/2.1.10/lovefield.min'],
+        'ng-flow': ['//cdnjs.cloudflare.com/ajax/libs/ng-flow/2.7.4/ng-flow-standalone.min'],
+        'fusty-flow': ['//cdnjs.cloudflare.com/ajax/libs/ng-flow/2.7.4/ng-flow.min'],
+        'fusty-flow-factory': ['//cdn.jsdelivr.net/fusty-flow.js/1.0.0b3/fusty-flow-factory'],
         'angularAMD': ['/public/js/angularAMD.min']
     },
     shim: {
@@ -17,7 +20,11 @@ require.config({
         'angular-messages': ['angular'],
         'angular-material': { deps: ['angular', 'angular-animate', 'angular-aria', 'angular-messages'] },
         'ui-router': ['angular'],
-        'angularAMD': ['angular']
+        'angularAMD': ['angular'],
+        'ng-flow': { 
+            exports: 'ng-flow',
+            deps: ['angular', 'fusty-flow', 'fusty-flow-factory' ]
+        }
     },
     deps: ['app']
 })

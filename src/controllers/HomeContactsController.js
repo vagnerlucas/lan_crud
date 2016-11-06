@@ -8,7 +8,9 @@
         let dialogCtrl = vm
 
         vm.contactList = []
-
+       
+        dialogCtrl.contactModel = {}
+       
         dialogCtrl.cancel = () => {
             dialogService.cancel()
         }
@@ -26,7 +28,21 @@
             }
         }
 
-        dialogCtrl.test = x => {
+        dialogCtrl.process = x => {
+
+            angular.forEach(x, function(flowFile, i) {
+                var fileReader = new FileReader();
+                fileReader.onload = function (event) {
+                var uri = event.target.result;
+                dialogCtrl.contactModel.picture = uri;     
+            };
+          
+            fileReader.readAsDataURL(flowFile.file);            
+
+            })
+        }
+
+        dialogCtrl.test = x => {            
             console.log(x)
         }
 

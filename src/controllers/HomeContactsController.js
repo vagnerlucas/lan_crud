@@ -2,7 +2,7 @@
 
     'use strict'
     
-    function HomeContactsController(DBService, dialogService) {
+    function HomeContactsController($scope, DBService, dialogService) {
         let vm = this
 
         let dialogCtrl = vm
@@ -57,7 +57,7 @@
         vm.createContact = () => {
             dialogService.showCustomDialog(vm.contactDlgOpt)
                 .then((data) => { /*console.log(data) */ },
-                      () => { vm.contactList = vm.getContactList() })
+                      () => { vm.getContactList() })
             console.log('createContact')
         }
 
@@ -71,16 +71,16 @@
 
         vm.getContactList = () => {
             return DBService.list('Contact').then((list) => {
-                //console.log(list)
-                return vm.contactList = list
+                vm.contactList = list
+                $scope.$apply()
+                return list
             })
         }
 
-        vm.contactList = vm.getContactList()
-
+        vm.getContactList()
     }
 
-    HomeContactsController.$inject = ['DBService', 'dialogService']
+    HomeContactsController.$inject = ['$scope', 'DBService', 'dialogService']
 
     require(['app'], function (app) {
         app.controller('HomeContactsController', HomeContactsController)

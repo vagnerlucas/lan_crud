@@ -12,6 +12,10 @@
       <span class="md-headline">{{contact.name}}</span>
       <span class="md-subhead description">{{contact.description}}</span>
     </md-card-title-text>
+    <md-card-title-media>
+      <md-icon>event</md-icon>
+      <span class="md-subhead description">{{contact.birthdate | date: 'shortDate' }}</span>
+    </md-card-title-media>
     <md-card-actions layout="row" layout-align="end center">
           <md-card-icon-actions>
             <md-button class="md-icon-button" aria-label="icon" ng-click="contact.favorite()">

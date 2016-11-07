@@ -1,7 +1,7 @@
 (function() {
     'use strict'
 
-    const app = function(angularAMD, angular, uiRouter, material, messages, ngFlow, config, init, dbProvider, MenuController) {
+    const app = function(angularAMD, angular, uiRouter, material, messages, /* localeBR, */ ngFlow, config, init, dbProvider, MenuController) {
 
         const a = angular.module('app', ['ui.router', 'ngMaterial', 'ngMessages', 'flow'])
                        .provider('db', dbProvider)
@@ -17,6 +17,7 @@
             'ui-router', 
             'angular-animate', 
             'angular-messages',
+            //'angular-locale-br',
             'ng-flow',
             'config', 
             'init', 

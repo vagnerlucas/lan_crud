@@ -3,7 +3,9 @@
   <md-card-title>
     <md-card-title-media>
       <div class="md-media-sm card-media" layout>
-        <img ng-src="{{contact.picture}}" class="md-avatar user-image" alt="{{contact.description}}" />
+        <div ng-if=contact.picture>
+          <img ng-src="{{contact.picture}}" class="md-avatar user-image" alt="{{contact.description}}" />
+        </div>
       </div>
     </md-card-title-media>
     <md-card-title-text>

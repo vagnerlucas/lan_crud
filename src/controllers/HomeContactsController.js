@@ -28,9 +28,9 @@
             }
         }
 
-        dialogCtrl.process = x => {
+        dialogCtrl.process = file => {
 
-            angular.forEach(x, function(flowFile, i) {
+            angular.forEach(file, function(flowFile, i) {
                 var fileReader = new FileReader();
                 fileReader.onload = function (event) {
                 var uri = event.target.result;
@@ -56,8 +56,8 @@
 
         vm.createContact = () => {
             dialogService.showCustomDialog(vm.contactDlgOpt)
-                .then((data) => { console.log(data) },
-                      () => { vm.getContactList() })
+                .then((data) => { /*console.log(data) */ },
+                      () => { vm.contactList = vm.getContactList() })
             console.log('createContact')
         }
 
@@ -70,14 +70,13 @@
         }
 
         vm.getContactList = () => {
-            DBService.list('Contact').then((list) => {
-                console.log(list)
-                vm.contactList = list
+            return DBService.list('Contact').then((list) => {
+                //console.log(list)
+                return vm.contactList = list
             })
-            return vm.contactList
         }
 
-        vm.getContactList()
+        vm.contactList = vm.getContactList()
 
     }
 

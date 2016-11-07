@@ -1,7 +1,7 @@
 (function () {
 
     function HomeCategoriesController() {
-        console.log('HomeCategoriesController')
+        //console.log('HomeCategoriesController')
     }
 
     require(['app'], function (app) {

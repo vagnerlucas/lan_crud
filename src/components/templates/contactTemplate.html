@@ -1,9 +1,9 @@
 <md-card>
+  <input type="hidden" value="{{contact.id}}">
   <md-card-title>
     <md-card-title-media>
       <div class="md-media-sm card-media" layout>
-        <!--<md-icon md-svg-icon="person" style="color:grey"></md-icon>-->
-        <img ng-src="/assets/img/vrl.jpg" class="md-avatar user-image" alt="{{contact.value}}" />
+        <img ng-src="{{contact.picture}}" class="md-avatar user-image" alt="{{contact.description}}" />
       </div>
     </md-card-title-media>
     <md-card-title-text>
@@ -12,8 +12,8 @@
     </md-card-title-text>
     <md-card-actions layout="row" layout-align="end center">
           <md-card-icon-actions>
-            <md-button class="md-icon-button" aria-label="icon" ng-click="contact.click()">
-              <md-icon class="material-icons" >{{ contact.fav ? 'favorite' : 'favorite_border'}}</md-icon>
+            <md-button class="md-icon-button" aria-label="icon" ng-click="contact.favorite()">
+              <md-icon class="material-icons" >{{ contact.starred ? 'favorite' : 'favorite_border'}}</md-icon>
             </md-button>
           </md-card-icon-actions>
           <md-card-icon-actions>

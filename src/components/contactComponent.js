@@ -11,12 +11,16 @@
 
     require(['app'], function(app) {
         app.component('contact', {
-			templateUrl: '/app/components/templates/contactTemplate.html',
+			templateUrl: '/src/components/templates/contactTemplate.html',
 			controller: contactController,
 			controllerAs: 'contact',
 			bindings: {
 				id: '=',
-				name: '='
+				name: '=',
+				description: '=',
+				email: '=',
+				birthdate: '=',
+				picture: '='
 			}
 		});
     })

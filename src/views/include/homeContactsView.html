@@ -8,7 +8,7 @@ div.overlay {
 }
 </style>
 
-<md-content class="md-padding" ng-init="contacts.getContactList()">
+<md-content class="md-padding">
     <div class="md-toolbar-tools overlay" layout-align="end center">	  
 	  <h2 class="md-flex">CONTACTS</h2>
 	  <md-button class="md-fab" ng-click="contacts.createContact($event)" aria-label="Add new contact">
@@ -19,7 +19,6 @@ div.overlay {
       	  <h2 class="md-flex">No contacts to display</h2>
     </div>
     <div ng-if="contacts.contactList.length > 0" class="animate-repeat" ng-repeat="c in contacts.contactList track by c.id">
-        <contact id={{c.id}} name={{c.name}}></contact>
+        <contact id=c.id name=c.name description=c.description birthdate=c.birthdate email=c.email picture=c.picture ></contact>
     </div>
-    <img class="preview" ng-src="{{contacts.image}}" />
 </md-content>

@@ -28,7 +28,7 @@
             addColumn('birthdate', lf.Type.DATE_TIME).
             addColumn('starred', lf.Type.BOOLEAN).
             addColumn('picture', lf.Type.OBJECT).
-            addNullable(['picture']).
+            addNullable(['picture', 'description', 'birthdate', 'starred']).
             addPrimaryKey([{
                 'name': 'id',
                 'autoIncrement': true
@@ -44,7 +44,7 @@
             addColumn('description', lf.Type.STRING).
             addColumn('contact_id', lf.Type.INTEGER).
             addColumn('picture', lf.Type.OBJECT).
-            addNullable(['picture']).
+            addNullable(['picture', 'description']).
             addPrimaryKey([{
                 'name': 'id',
                 'autoIncrement': true

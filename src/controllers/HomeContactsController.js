@@ -7,7 +7,7 @@
 
         let dialogCtrl = vm
 
-        vm.contactList = []
+        //vm.contactList = []
        
         dialogCtrl.contactModel = {}
        
@@ -42,8 +42,16 @@
             })
         }
 
-        dialogCtrl.test = x => {            
-            console.log(x)
+        dialogCtrl.test = contact => {   
+            contact.starred = contact.starred || false
+                     
+            DBService.add('Contact', contact).then((r) => {
+                console.log(r)
+                const msg = 'Contact saved!'
+                const title = 'Done'
+                dialogCtrl.contactModel = {}
+                dialogService.showMessage(title, msg).then(() => {})
+            }, (e) => { console.log(e) })
         }
 
         vm.createContact = () => {
@@ -69,7 +77,7 @@
             return vm.contactList
         }
 
-        //vm.getContactList()
+        vm.getContactList()
 
     }
 

@@ -1,12 +1,11 @@
 (function() {
-    function contactController() {
-
+    function contactController(DBService) {
 		var vm = this;
-		vm.test = 'xadawS';
-		
 		vm.fav = false;
 		
-		vm.click = () => { vm.fav = !vm.fav }
+		vm.favorite = contact => { 
+
+		 }
     }
 
     require(['app'], function(app) {
@@ -25,8 +24,5 @@
 		});
     })
 
-
-
-    define(['app'], function() { return contactController })
-
+    define(['app', 'services/dbService'], function() { return contactController })
 })()

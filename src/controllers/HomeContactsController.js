@@ -7,8 +7,6 @@
 
         let dialogCtrl = vm
 
-        //vm.contactList = []
-       
         dialogCtrl.contactModel = {}
        
         dialogCtrl.cancel = () => {
@@ -42,7 +40,7 @@
             })
         }
 
-        dialogCtrl.test = contact => {   
+        dialogCtrl.addContact = contact => {   
             contact.starred = contact.starred || false
                      
             DBService.add('Contact', contact).then((r) => {
@@ -56,9 +54,8 @@
 
         vm.createContact = () => {
             dialogService.showCustomDialog(vm.contactDlgOpt)
-                .then((data) => { /*console.log(data) */ },
+                .then((data) => { vm.getContactList() },
                       () => { vm.getContactList() })
-            console.log('createContact')
         }
 
         vm.editContact = (id) => {

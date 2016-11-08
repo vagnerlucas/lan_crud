@@ -2,8 +2,8 @@
   <input type="hidden" value="{{contact.id}}">
   <md-card-title>
     <md-card-title-media>
-      <div class="md-media-sm card-media" layout>
-        <div>
+      <div class="md-media-sm card-media">
+        <div class="profile-picture">
           <img ng-src="{{contact.picture || '/public/img/no_image.png'}}" class="md-avatar user-image" alt="{{contact.description}}" />
         </div>
       </div>
@@ -11,11 +11,11 @@
     <md-card-title-text>
       <span class="md-headline">{{contact.name}}</span>
       <span class="md-subhead description">{{contact.description}}</span>
+      <div>
+        <md-icon>event</md-icon>
+        <span class="md-subhead description">{{contact.birthdate | date: 'dd/MM' }}</span>
+      </div>
     </md-card-title-text>
-    <md-card-title-media>
-      <md-icon>event</md-icon>
-      <span class="md-subhead description">{{contact.birthdate | date: 'dd/MM' }}</span>
-    </md-card-title-media>
     <md-card-actions layout="row" layout-align="end center">
           <md-card-icon-actions>
             <md-button class="md-icon-button" aria-label="icon" ng-click="contact.favorite()">

@@ -49,7 +49,7 @@
         $urlMatcherFactoryProvider.caseInsensitive(true);
     }
 
-    define(['angularAMD'], function () {
+    define(['angularAMD', 'fusty-flow-factory'], function () {
         return config
     });
 

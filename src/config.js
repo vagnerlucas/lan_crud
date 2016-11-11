@@ -28,7 +28,7 @@
 
         const homeCategories = angularAMD.route({
             url: '/categories',
-            controllerAs: 'Categories',
+            controllerAs: 'categories',
             controllerUrl: 'controllers/HomeCategoriesController',
             templateUrl: '/src/views/include/homeCategoriesView.html',
         })

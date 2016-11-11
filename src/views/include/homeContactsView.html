@@ -1,24 +1,23 @@
 <style>
-div.overlay {
-  background-color:rgba(229, 235, 245, 0.4);
-  color: rgba(0,0,0,0.7);
-  font-weight:bold;
-  border: 2px solid rgba(229, 235, 245, 0.4);
-  border-radius: 10px;
-}
+    div.overlay {
+        background-color: rgba(229, 235, 245, 0.4);
+        color: rgba(0, 0, 0, 0.7);
+        font-weight: bold;
+        border: 2px solid rgba(229, 235, 245, 0.4);
+        border-radius: 10px;
+    }
 </style>
-
 <md-content class="md-padding" ng-cloak>
-    <div class="md-toolbar-tools overlay" layout-align="end center">	  
-	  <h2 class="md-flex">CONTACTS</h2>
-	  <md-button class="md-fab" ng-click="contacts.createContact($event)" aria-label="Add new contact">
-			<md-icon aria-label="new">add</md-icon>
-		</md-button>
-	  </div>
+    <div class="md-toolbar-tools overlay" layout-align="end center">
+        <h2 class="md-flex">CONTACTS</h2>
+        <md-button class="md-fab" ng-click="contacts.createContact($event)" aria-label="Add new contact">
+            <md-icon aria-label="new">add</md-icon>
+        </md-button>
+    </div>
     <div ng-if="contacts.contactList.length == 0" layout-align="center center">
-      	  <h2 class="md-flex">No contacts to display</h2>
+        <h2 class="md-flex">No contacts to display</h2>
     </div>
     <div ng-if="contacts.contactList.length > 0" class="animate-repeat" ng-repeat="c in contacts.contactList track by c.id">
-        <contact id=c.id name=c.name description=c.description birthdate=c.birthdate email=c.email picture=c.picture starred=c.starred ></contact>
+        <contact id=c.id name=c.name description=c.description birthdate=c.birthdate email=c.email picture=c.picture starred=c.starred></contact>
     </div>
 </md-content>

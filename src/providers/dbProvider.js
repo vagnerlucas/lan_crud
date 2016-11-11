@@ -43,7 +43,6 @@
             addColumn('id', lf.Type.INTEGER).
             addColumn('name', lf.Type.STRING).
             addColumn('description', lf.Type.STRING).
-            addColumn('contact_id', lf.Type.INTEGER).
             addColumn('picture', lf.Type.OBJECT).
             addNullable(['picture', 'description']).
             addPrimaryKey([{

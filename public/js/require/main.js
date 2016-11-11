@@ -26,7 +26,7 @@ require.config({
         'angularAMD': ['angular'],
         'ng-flow': { 
             exports: 'ng-flow',
-            deps: ['angular', 'fusty-flow', 'fusty-flow-factory' ]
+            deps: ['angular', 'fusty-flow-factory', 'fusty-flow']
         }
     },
     deps: ['app']

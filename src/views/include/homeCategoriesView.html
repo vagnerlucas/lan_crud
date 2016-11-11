@@ -10,8 +10,14 @@
 <md-content class="md-padding">
   <div class="md-toolbar-tools overlay" layout-align="end center">
     <h2 class="md-flex">CATEGORIES</h2>
-    <md-button class="md-fab" aria-label="Add new category">
+    <md-button class="md-fab" ng-click="categories.createCategory($event)"aria-label="Add new category">
       <md-icon aria-label="new">add</md-icon>
     </md-button>
   </div>
+  <div ng-if="categories.categoryList.length == 0" layout-align="center center">
+      	  <h2 class="md-flex">No categories to display</h2>
+    </div>
+    <div ng-if="categories.categoryList.length > 0" class="animate-repeat" ng-repeat="c in categories.contactList track by c.id">
+        <category id=c.id name=c.name description=c.description picture=c.picture></category>
+    </div>
 </md-content>

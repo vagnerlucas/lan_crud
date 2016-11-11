@@ -19,6 +19,7 @@ require.config({
         'angular-animate': ['angular'],
         'angular-aria': ['angular'],
         'angular-messages': ['angular'],
+        'fusty-flow-factory': ['angular'],
         'angular-material': { deps: ['angular', 'angular-animate', 'angular-aria', 'angular-messages'] },
         //'angular-locale-br': ['angular'],
         'ui-router': ['angular'],

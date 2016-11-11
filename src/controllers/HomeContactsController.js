@@ -1,14 +1,14 @@
 (function () {
 
     'use strict'
-    
+
     function HomeContactsController($scope, DBService, dialogService) {
         let vm = this
 
         let dialogCtrl = vm
 
         dialogCtrl.contactModel = {}
-       
+
         dialogCtrl.cancel = () => {
             dialogService.cancel()
         }
@@ -28,43 +28,41 @@
 
         dialogCtrl.process = file => {
 
-            angular.forEach(file, function(flowFile, i) {
+            angular.forEach(file, function (flowFile, i) {
                 var fileReader = new FileReader();
                 fileReader.onload = function (event) {
-                var uri = event.target.result;
-                dialogCtrl.contactModel.picture = uri;     
-            };
-          
-            fileReader.readAsDataURL(flowFile.file);            
+                    var uri = event.target.result;
+                    dialogCtrl.contactModel.picture = uri;
+                };
+
+                fileReader.readAsDataURL(flowFile.file);
 
             })
         }
 
-        dialogCtrl.addContact = contact => {   
+        dialogCtrl.addContact = contact => {
             contact.starred = contact.starred || false
-                     
+
             DBService.add('Contact', contact).then((r) => {
                 console.log(r)
                 const msg = 'Contact saved!'
                 const title = 'Done'
                 dialogCtrl.contactModel = {}
-                dialogService.showMessage(title, msg).then(() => {})
+                dialogService.showMessage(title, msg).then(() => { })
             }, (e) => { console.log(e) })
         }
 
         vm.createContact = () => {
             dialogService.showCustomDialog(vm.contactDlgOpt)
                 .then((data) => { vm.getContactList() },
-                      () => { vm.getContactList() })
+                () => { vm.getContactList() })
         }
 
         vm.editContact = (id) => {
 
         }
 
-        vm.deleteContact = (id) => {
-
-        }
+        
 
         vm.getContactList = () => {
             return DBService.list('Contact').then((list) => {

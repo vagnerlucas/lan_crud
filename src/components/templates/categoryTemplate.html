@@ -1,0 +1,24 @@
+<md-card>
+  <input type="hidden" value="{{category.id}}">
+  <md-card-title>
+    <md-card-title-media>
+      <div class="md-media-sm card-media">
+        <div class="profile-picture">
+          <img ng-src="{{category.picture || '/public/img/no_image.png'}}" class="md-avatar user-image" alt="{{category.description}}"
+          />
+        </div>
+      </div>
+    </md-card-title-media>
+    <md-card-title-text>
+      <span class="md-headline">{{ category.name }}</span>
+      <span class="md-subhead description">{{ category.description }}</span>
+    </md-card-title-text>
+    <md-card-actions layout="row" layout-align="end center">
+      <md-card-icon-actions>
+        <md-button class="md-icon-button" aria-label="icon" ng-click="category.remove($event, category.id)">
+          <md-icon class="material-icons">clear</md-icon>
+        </md-button>
+      </md-card-icon-actions>
+    </md-card-actions>
+  </md-card-title>
+</md-card>

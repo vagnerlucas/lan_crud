@@ -8,7 +8,7 @@
             const yes = 'Go ahead'
             dialogService.openConfirmDialog($event, title, msg, yes).then((f) => {
                 if (f) {
-                    DBService.del('category', id).then((r) => {
+                    DBService.del('Category', id).then((r) => {
                         return Promise.resolve(true)
                     },
                         (e) => {

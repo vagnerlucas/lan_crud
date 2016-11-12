@@ -40,7 +40,6 @@
         dialogCtrl.addCategory = category => {
 
             DBService.add('Category', category).then((r) => {
-                console.log(r)
                 const msg = 'Category saved!'
                 const title = 'Done'
                 dialogCtrl.categoryModel = {}
@@ -60,7 +59,6 @@
 
         vm.getCategoryList = () => {
             return DBService.list('Category').then((list) => {
-                console.log(list)
                 vm.categoryList = list
                 $scope.$apply()
                 return list

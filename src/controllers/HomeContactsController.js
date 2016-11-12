@@ -44,7 +44,6 @@
             contact.starred = contact.starred || false
 
             DBService.add('Contact', contact).then((r) => {
-                console.log(r)
                 const msg = 'Contact saved!'
                 const title = 'Done'
                 dialogCtrl.contactModel = {}
@@ -61,8 +60,6 @@
         vm.editContact = (id) => {
 
         }
-
-        
 
         vm.getContactList = () => {
             return DBService.list('Contact').then((list) => {

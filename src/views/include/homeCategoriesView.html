@@ -7,7 +7,11 @@
     border-radius: 10px;
   }
   div.category-list {
-    display: inline-flex
+    position: relative;
+    text-align: center;
+  }
+  .category-box {
+    display: inline-block;
   }
 </style>
 <md-content class="md-padding">
@@ -21,8 +25,8 @@
     <h2 class="md-flex">No categories to display</h2>
   </div>
   <div class="category-list">
-    <div ng-if="categories.categoryList.length > 0" class="animate-repeat" ng-repeat="c in categories.categoryList track by c.id">
-      <category id=c.id name=c.name description=c.description picture=c.picture></category>
+    <div ng-if="categories.categoryList.length > 0" class="animate-repeat">
+      <category ng-repeat="c in categories.categoryList track by c.id" id=c.id name=c.name description=c.description picture=c.picture></category>
     </div>
   </div>
 </md-content>

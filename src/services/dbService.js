@@ -90,7 +90,7 @@
             
             return dbProvider.dbPromise.then((dataBase) => {
                 try {
-                        ['Contact', 'Category', 'User'].forEach((e, i) => {
+                        ['Contact', 'Category', 'ContactCategory', 'User'].forEach((e, i) => {
                             let table = dataBase.getSchema().table(e)
                             dataBase.delete().from(table).exec()
                         })

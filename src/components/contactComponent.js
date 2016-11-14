@@ -38,13 +38,7 @@
 			controller: contactController,
 			controllerAs: 'contact',
 			bindings: {
-				id: '=',
-				name: '=',
-				description: '=',
-				email: '=',
-				birthdate: '=',
-				picture: '=',
-				starred: '='
+				data: '='
 			}
 		});
     })

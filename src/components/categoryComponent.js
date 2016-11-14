@@ -32,10 +32,7 @@
 			controller: categoryController,
 			controllerAs: 'category',
 			bindings: {
-				id: '=',
-				name: '=',
-				description: '=',
-				picture: '=',
+				data: '='
 			}
 		});
     })

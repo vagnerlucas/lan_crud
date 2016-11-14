@@ -1,29 +1,29 @@
 <md-card>
-  <input type="hidden" value="{{contact.id}}">
+  <input type="hidden" value="{{contact.data.id}}">
   <md-card-title>
     <md-card-title-media>
       <div class="md-media-sm card-media">
         <div class="profile-picture">
-          <img ng-src="{{contact.picture || '/public/img/no_image.png'}}" class="md-avatar user-image" alt="{{contact.description}}" />
+          <img ng-src="{{contact.data.picture || '/public/img/no_image.png'}}" class="md-avatar user-image" alt="{{contact.data.description}}" />
         </div>
       </div>
     </md-card-title-media>
     <md-card-title-text>
-      <span class="md-headline">{{ contact.name }}</span>
-      <span class="md-subhead description">{{ contact.description }}</span>
-      <div ng-if="contact.birthdate">
+      <span class="md-headline">{{ contact.data.name }}</span>
+      <span class="md-subhead description">{{ contact.data.description }}</span>
+      <div ng-if="contact.data.birthdate">
         <md-icon>event</md-icon>
-        <span class="md-subhead description">{{ contact.birthdate | date: 'dd/MM' }}</span>
+        <span class="md-subhead description">{{ contact.data.birthdate | date: 'dd/MM' }}</span>
       </div>
     </md-card-title-text>
     <md-card-actions layout="row" layout-align="end center">
           <md-card-icon-actions>
-            <md-button class="md-icon-button" aria-label="icon" ng-click="contact.favorite(contact)">
-              <md-icon class="material-icons" >{{ contact.starred ? 'favorite' : 'favorite_border' }}</md-icon>
+            <md-button class="md-icon-button" aria-label="icon" ng-click="contact.data.favorite(contact)">
+              <md-icon class="material-icons" >{{ contact.data.starred ? 'favorite' : 'favorite_border' }}</md-icon>
             </md-button>
           </md-card-icon-actions>
           <md-card-icon-actions>
-            <md-button class="md-icon-button" aria-label="icon" ng-click="contact.remove($event, contact.id)">
+            <md-button class="md-icon-button" aria-label="icon" ng-click="contact.data.remove($event, contact.data.id)">
               <md-icon class="material-icons" >clear</md-icon>
             </md-button>
           </md-card-icon-actions>

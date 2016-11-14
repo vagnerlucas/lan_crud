@@ -1,17 +1,17 @@
 <md-card class="category-box">
-  <input type="hidden" value="{{category.id}}">
+  <input type="hidden" value="{{category.data.id}}">
   <md-card-title>
     <md-card-title-media>
       <div class="md-media-sm card-media">
         <div class="profile-picture">
-          <img ng-src="{{category.picture || '/public/img/no_image.png'}}" class="md-avatar user-image" alt="{{category.description}}"
+          <img ng-src="{{category.data.picture || '/public/img/no_image.png'}}" class="md-avatar user-image" alt="{{category.data.description}}"
           />
         </div>
       </div>
     </md-card-title-media>
     <md-card-title-text>
-      <span class="md-headline">{{ category.name }}</span>
-      <span class="md-subhead description">{{ category.description }}</span>
+      <span class="md-headline">{{ category.data.name }}</span>
+      <span class="md-subhead description">{{ category.data.description }}</span>
     </md-card-title-text>
     <md-card-actions layout="row" layout-align="end center">
       <md-card-icon-actions>

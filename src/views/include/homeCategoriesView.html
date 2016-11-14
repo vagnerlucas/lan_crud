@@ -13,6 +13,9 @@
   .category-box {
     display: inline-block;
   }
+  .description {
+    text-align: left
+  }
 </style>
 <md-content class="md-padding">
   <div class="md-toolbar-tools overlay" layout-align="end center">
@@ -26,7 +29,7 @@
   </div>
   <div class="category-list">
     <div ng-if="categories.categoryList.length > 0" class="animate-repeat">
-      <category ng-repeat="c in categories.categoryList track by c.id" id=c.id name=c.name description=c.description picture=c.picture></category>
+      <category ng-repeat="c in categories.categoryList track by c.id" data=c></category>
     </div>
   </div>
 </md-content>

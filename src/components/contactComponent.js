@@ -1,5 +1,5 @@
 (function() {
-    function contactController(DBService, dialogService, $state) {
+    function contactController(DBService, dialogService, $state, $scope) {
 		var vm = this;
 
 		vm.remove = ($event, id) => {
@@ -25,11 +25,20 @@
             })
         }
 
+        loadCategories = () => {
+            DBService.list('Category').then((list) => {
+                vm.data.categories = list
+                $scope.$apply()
+            })
+        }
+
 		vm.favorite = contact => { 
 			contact.starred = !contact.starred
 			DBService.update('Contact', contact.id, contact)
 				.then(() => {})
 		}
+
+        loadCategories()
     }
 
     require(['app'], function(app) {
@@ -43,5 +52,5 @@
 		});
     })
 
-    define(['app', 'services/dbService', 'services/dialogService'], function() { return contactController })
+    define(['app', 'services/dbService', 'services/dialogService', 'components/categoryComponent'], function() { return contactController })
 })()

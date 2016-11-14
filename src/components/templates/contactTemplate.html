@@ -16,14 +16,17 @@
         <span class="md-subhead description">{{ contact.data.birthdate | date: 'dd/MM' }}</span>
       </div>
     </md-card-title-text>
+    <md-card-actions layout="row" layout-align="right center">
+    </md-card-actions>
     <md-card-actions layout="row" layout-align="end center">
-          <md-card-icon-actions>
-            <md-button class="md-icon-button" aria-label="icon" ng-click="contact.data.favorite(contact)">
+      <category ng-repeat="c in contact.data.categories track by c.id" data=c hide-text="true" hide-buttons="true"></category>
+         <md-card-icon-actions>
+            <md-button class="md-icon-button" aria-label="icon" ng-click="contact.favorite(contact.data)">
               <md-icon class="material-icons" >{{ contact.data.starred ? 'favorite' : 'favorite_border' }}</md-icon>
             </md-button>
           </md-card-icon-actions>
           <md-card-icon-actions>
-            <md-button class="md-icon-button" aria-label="icon" ng-click="contact.data.remove($event, contact.data.id)">
+            <md-button class="md-icon-button" aria-label="icon" ng-click="contact.remove($event, contact.data.id)">
               <md-icon class="material-icons" >clear</md-icon>
             </md-button>
           </md-card-icon-actions>

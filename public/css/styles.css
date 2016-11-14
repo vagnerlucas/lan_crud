@@ -1,4 +1,4 @@
-.user-image {
+.user-image, .category-image {
     display: inline-block;
     width: 75px;
     height: 75px;

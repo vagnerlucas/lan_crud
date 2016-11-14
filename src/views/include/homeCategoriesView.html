@@ -29,7 +29,7 @@
   </div>
   <div class="category-list">
     <div ng-if="categories.categoryList.length > 0" class="animate-repeat">
-      <category ng-repeat="c in categories.categoryList track by c.id" data=c></category>
+      <category ng-repeat="c in categories.categoryList track by c.id" data=c hide-buttons="false" hide-text="false" ></category>
     </div>
   </div>
 </md-content>

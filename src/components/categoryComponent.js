@@ -32,7 +32,9 @@
 			controller: categoryController,
 			controllerAs: 'category',
 			bindings: {
-				data: '='
+				data: '=',
+                hideButtons: '=',
+                hideText: '='
 			}
 		});
     })

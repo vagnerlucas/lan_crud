@@ -16,10 +16,24 @@
         <span class="md-subhead description">{{ contact.data.birthdate | date: 'dd/MM' }}</span>
       </div>
     </md-card-title-text>
-    <md-card-actions layout="row" layout-align="right center">
-    </md-card-actions>
-    <md-card-actions layout="row" layout-align="end center">
-      <category ng-repeat="c in contact.data.categories track by c.id" data=c hide-text="true" hide-buttons="true"></category>
+    <md-card-actions layout="row" layout-align="end center">  
+    <div layout="column" flex="33" flex-sm="100" flex-xs="100" layout-align="center center">
+        <md-menu md-offset="0 -7">
+          <md-button aria-label="Add category" class="md-icon-button" ng-click="contact.openCategoryMenu(contact.data); $mdOpenMenu($event)" >
+            <md-icon>add</md-icon>
+          </md-button>
+          <md-menu-content>
+            <md-menu-item ng-repeat="c in contact.categoriesMenu track by c.id">
+              <md-button aria-label="{{c.name}}" ng-click="contact.addCategory(contact.data, c)"> 
+                <span >
+                  <img width="32px" height="32px" ng-src="{{c.picture}}"/>
+                </span>
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+      </div>
+      <category ng-repeat="c in contact.categories track by c.id" data=c hide-buttons="true" hide-text="true"></category>
          <md-card-icon-actions>
             <md-button class="md-icon-button" aria-label="icon" ng-click="contact.favorite(contact.data)">
               <md-icon class="material-icons" >{{ contact.data.starred ? 'favorite' : 'favorite_border' }}</md-icon>

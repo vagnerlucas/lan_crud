@@ -26,8 +26,15 @@
         }
 
         loadCategories = () => {
-            DBService.list('Category').then((list) => {
-                vm.data.categories = list
+            DBService.list('ContactCategory').then((list) => {
+                vm.data.categories = []
+                list.forEach((e, i) => {
+                    if (e.contact_id == vm.data.id)
+                        DBService.getById('Category', e.category_id).then((cat) => {
+                            vm.data.categories.push(cat)
+                        })
+                })
+            }).then(() => {
                 $scope.$apply()
             })
         }
@@ -37,6 +44,38 @@
 			DBService.update('Contact', contact.id, contact)
 				.then(() => {})
 		}
+
+        vm.openCategoryMenu = contact => {
+            DBService.list('Category').then((list) => {
+                vm.categoriesMenu = list
+            })
+        }
+
+        vm.addCategory = (contact, category) => {
+            console.log(contact, category)
+            DBService.list('ContactCategory').then((list) => {
+                console.log(list)
+                if (list.length == 0)
+                    return Promise.resolve(category)
+                list.forEach((e, i) => {
+                    if (!e.category_id == category.id && !e.contact_id == contact.id)
+                        return Promise.resolve(category);        
+                })
+                return Promise.reject(null)
+            }).then((category) => {
+                console.log(category)
+                let contactCategory = {
+                    'contact_id': contact.id,
+                    'category_id': category.id 
+                }
+
+                DBService.add('ContactCategory', contactCategory).then((r) => {
+                    contact.category.push(category)
+                })
+            }, (data) => { console.info('No category found') }).then(() => {
+                $scope.$apply()
+            })
+        }
 
         loadCategories()
     }

@@ -26,8 +26,8 @@
         }
 
         loadCategories = () => {
+            vm.data.categories = []
             DBService.list('ContactCategory').then((list) => {
-                vm.data.categories = []
                 list.forEach((e, i) => {
                     if (e.contact_id == vm.data.id)
                         DBService.getById('Category', e.category_id).then((cat) => {
@@ -52,27 +52,38 @@
         }
 
         vm.addCategory = (contact, category) => {
-            console.log(contact, category)
+
             DBService.list('ContactCategory').then((list) => {
-                console.log(list)
+                //console.log(list)
                 if (list.length == 0)
                     return Promise.resolve(category)
+                    
+                let catRes;
+
                 list.forEach((e, i) => {
-                    if (!e.category_id == category.id && !e.contact_id == contact.id)
-                        return Promise.resolve(category);        
+                    console.log(e, contact.id, category.id)
+                    if (e.category_id != category.id && e.contact_id == contact.id) {
+                        if (contact.categories.includes(category)) {
+                            catRes = category
+                            return
+                        }
+                    }
+                                
                 })
-                return Promise.reject(null)
+                return Promise.resolve(catRes)
             }).then((category) => {
-                console.log(category)
+                // console.log(category)
+
                 let contactCategory = {
                     'contact_id': contact.id,
                     'category_id': category.id 
                 }
 
                 DBService.add('ContactCategory', contactCategory).then((r) => {
-                    contact.category.push(category)
+                    contact.categories.push(category)
                 })
-            }, (data) => { console.info('No category found') }).then(() => {
+                //, (data) => { console.info(`No category found ${data}`) }
+            }).then(() => {
                 $scope.$apply()
             })
         }

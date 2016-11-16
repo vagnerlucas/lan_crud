@@ -10,7 +10,7 @@
     </md-card-title-media>
     <md-card-title-text>
       <span class="md-headline">{{ contact.data.name }}</span>
-      <span class="md-subhead description">{{ contact.data.description }}</span>
+      <span class="md-subhead description">{{ contact.data.description }} | {{ contact.data.email }}</span>
       <div ng-if="contact.data.birthdate">
         <md-icon>event</md-icon>
         <span class="md-subhead description">{{ contact.data.birthdate | date: 'dd/MM' }}</span>

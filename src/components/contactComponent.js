@@ -31,11 +31,14 @@
                 list.forEach((e, i) => {
                     if (e.contact_id == vm.data.id)
                         DBService.getById('Category', e.category_id).then((cat) => {
-                            vm.data.categories.push(cat)
+                            if (cat.length > 0)
+                                vm.data.categories.push(cat[0])
                         })
                 })
             }).then(() => {
-                $scope.$apply()
+                setTimeout(() => {
+                    $scope.$apply()
+                }, 100)
             })
         }
 
@@ -47,6 +50,10 @@
 
         vm.openCategoryMenu = contact => {
             DBService.list('Category').then((list) => {
+                list.forEach((e, i) => {
+                    if (contact.categories.includes(e))
+                        list.slice(i, 1)
+                })
                 vm.categoriesMenu = list
             })
         }

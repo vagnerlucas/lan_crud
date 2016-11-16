@@ -10,7 +10,7 @@ require.config({
         'ui-router': ['//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min'],
         'lovefield': ['//cdnjs.cloudflare.com/ajax/libs/lovefield/2.1.10/lovefield.min'],
         'ng-flow': ['//cdnjs.cloudflare.com/ajax/libs/ng-flow/2.7.4/ng-flow-standalone.min'],
-        'fusty-flow': ['//cdnjs.cloudflare.com/ajax/libs/ng-flow/2.7.4/ng-flow.min'],
+        // 'fusty-flow': ['//cdnjs.cloudflare.com/ajax/libs/ng-flow/2.7.4/ng-flow.min'],
         'fusty-flow-factory': ['//cdn.jsdelivr.net/fusty-flow.js/1.0.0b3/fusty-flow-factory'],
         'angularAMD': ['/public/js/angularAMD.min']
     },
@@ -26,7 +26,7 @@ require.config({
         'angularAMD': ['angular'],
         'ng-flow': { 
             exports: 'ng-flow',
-            deps: ['angular', 'fusty-flow-factory', 'fusty-flow']
+            deps: ['angular', 'fusty-flow-factory']
         }
     },
     deps: ['app']

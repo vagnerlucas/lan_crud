@@ -27,19 +27,38 @@
 
         loadCategories = () => {
             vm.data.categories = []
-            DBService.list('ContactCategory').then((list) => {
-                list.forEach((e, i) => {
-                    if (e.contact_id == vm.data.id)
-                        DBService.getById('Category', e.category_id).then((cat) => {
-                            if (cat.length > 0)
-                                vm.data.categories.push(cat[0])
-                        })
+
+            DBService.getSchema('ContactCategory').then((schema) => {
+                const query = schema.contact_id.eq(vm.data.id)
+
+                DBService.executeQuery(schema, query).then((list) => {
+                    console.info(list)
+                    vm.data.categories = list
+                }, (e) => console.error(e) )
+                .then(() => {
+                    setTimeout(() => {
+                        $scope.$apply()
+                    }, 100)
                 })
-            }).then(() => {
-                setTimeout(() => {
-                    $scope.$apply()
-                }, 100)
             })
+            //contactCategory.
+
+
+            // DBService.list('ContactCategory')
+            // .then((list) => {
+            //     list.forEach((e, i) => {
+            //         if (e.contact_id == vm.data.id)
+            //             DBService.getById('Category', e.category_id).then((cat) => {
+            //                 if (cat.length > 0)
+            //                     vm.data.categories.push(cat[0])
+            //             })
+            //     })
+            // })
+            // .then(() => {
+            //     setTimeout(() => {
+            //         $scope.$apply()    
+            //       }, 100)
+            // })
         }
 
 		vm.favorite = contact => { 
@@ -50,9 +69,12 @@
 
         vm.openCategoryMenu = contact => {
             DBService.list('Category').then((list) => {
-                list.forEach((e, i) => {
-                    if (contact.categories.includes(e))
-                        list.slice(i, 1)
+                    contact.categories.forEach((e, j) => {
+                        list.forEach((el, i) => {
+                            if (el.id == e.id) {
+                                list.splice(i, 1)
+                            }
+                    })
                 })
                 vm.categoriesMenu = list
             })

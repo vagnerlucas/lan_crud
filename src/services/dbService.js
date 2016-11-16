@@ -55,6 +55,25 @@
                                )
             })
         }
+        
+        vm.getSchema = model => {
+           return dbProvider.dbPromise.then((dataBase) => {
+               return dataBase.getSchema().table(model)
+           })
+        } 
+
+        vm.executeQuery = (model, query) => {
+            return dbProvider.dbPromise.then((dataBase) => {
+                return dataBase.select()
+                    .from(model)
+                    .where(query)
+                    .exec()
+                    .then(
+                        (r) => { return Promise.resolve(r) },
+                        (e) => { throw e }
+                    )
+            })
+        }
 
         vm.del = (model, id) => {
             return dbProvider.dbPromise.then((dataBase) => {

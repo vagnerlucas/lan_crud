@@ -23,6 +23,14 @@
             <md-icon>add</md-icon>
           </md-button>
           <md-menu-content>
+            <div ng-if="contact.categoriesMenu.length == 0">
+              <md-menu-item>
+                <md-button aria-label="empty">
+                  <span>No more categories to display</span>
+                </md-button>
+              </md-menu-item>
+            </div>
+            <div ng-if="contact.categoriesMenu.length > 0">
             <md-menu-item ng-repeat="c in contact.categoriesMenu track by c.id">
               <md-button aria-label="{{c.name}}" ng-click="contact.addCategory(contact.data, c)"> 
                 <span >
@@ -30,6 +38,7 @@
                 </span>
               </md-button>
             </md-menu-item>
+            </div>
           </md-menu-content>
         </md-menu>
       </div>

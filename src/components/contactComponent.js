@@ -31,9 +31,13 @@
             DBService.getSchema('ContactCategory').then((schema) => {
                 const query = schema.contact_id.eq(vm.data.id)
 
+                //TODO add new function for join tables
                 DBService.executeQuery(schema, query).then((list) => {
-                    console.info(list)
-                    vm.data.categories = list
+                    list.forEach((e) => {
+                        DBService.getById('Category', e.category_id).then((cat) => {
+                            vm.data.categories.push(cat[0])
+                        })
+                    })
                 }, (e) => console.error(e) )
                 .then(() => {
                     setTimeout(() => {
@@ -41,24 +45,6 @@
                     }, 100)
                 })
             })
-            //contactCategory.
-
-
-            // DBService.list('ContactCategory')
-            // .then((list) => {
-            //     list.forEach((e, i) => {
-            //         if (e.contact_id == vm.data.id)
-            //             DBService.getById('Category', e.category_id).then((cat) => {
-            //                 if (cat.length > 0)
-            //                     vm.data.categories.push(cat[0])
-            //             })
-            //     })
-            // })
-            // .then(() => {
-            //     setTimeout(() => {
-            //         $scope.$apply()    
-            //       }, 100)
-            // })
         }
 
 		vm.favorite = contact => { 
@@ -83,35 +69,30 @@
         vm.addCategory = (contact, category) => {
 
             DBService.list('ContactCategory').then((list) => {
-                //console.log(list)
                 if (list.length == 0)
                     return Promise.resolve(category)
                     
                 let catRes;
 
-                list.forEach((e, i) => {
-                    console.log(e, contact.id, category.id)
-                    if (e.category_id != category.id && e.contact_id == contact.id) {
-                        if (contact.categories.includes(category)) {
-                            catRes = category
-                            return
-                        }
+                contact.categories.forEach((el, i) => {
+                    if (el.id != category.id) {
+                        catRes = category
+                        return
                     }
-                                
                 })
+                
                 return Promise.resolve(catRes)
             }).then((category) => {
-                // console.log(category)
+                if (category != null) {
+                    let contactCategory = {
+                        'contact_id': contact.id,
+                        'category_id': category.id 
+                    }
 
-                let contactCategory = {
-                    'contact_id': contact.id,
-                    'category_id': category.id 
+                    DBService.add('ContactCategory', contactCategory).then((r) => {
+                        contact.categories.push(category)
+                    })
                 }
-
-                DBService.add('ContactCategory', contactCategory).then((r) => {
-                    contact.categories.push(category)
-                })
-                //, (data) => { console.info(`No category found ${data}`) }
             }).then(() => {
                 $scope.$apply()
             })

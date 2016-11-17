@@ -62,6 +62,7 @@
                             }
                     })
                 })
+
                 vm.categoriesMenu = list
             })
         }
@@ -71,7 +72,10 @@
             DBService.list('ContactCategory').then((list) => {
                 if (list.length == 0)
                     return Promise.resolve(category)
-                    
+
+                if (contact.categories.length == 0)
+                    return Promise.resolve(category)
+
                 let catRes;
 
                 contact.categories.forEach((el, i) => {

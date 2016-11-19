@@ -44,7 +44,11 @@
                 const title = 'Done'
                 dialogCtrl.categoryModel = {}
                 dialogService.showMessage(title, msg).then(() => { })
-            }, (e) => { console.log(e) })
+            }, (e) => { 
+                const msg = 'Error while adding category.\nCheck if the name is not a duplicated one'
+                const title = 'Error'
+                dialogService.showMessage(title, msg).then(() => { }) 
+            })
         }
 
         vm.createCategory = () => {

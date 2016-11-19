@@ -51,7 +51,7 @@
                                .exec()
                                .then(
                                    () => { return this },
-                                   (err) => { Promise.reject(err) }
+                                   (err) => { return Promise.reject(err) }
                                )
             })
         }

@@ -48,7 +48,11 @@
                 const title = 'Done'
                 dialogCtrl.contactModel = {}
                 dialogService.showMessage(title, msg).then(() => { })
-            }, (e) => { console.log(e) })
+            }, (e) => { 
+                const msg = 'Error while adding contact.\nCheck if the email is not a duplicated one'
+                const title = 'Error'
+                dialogService.showMessage(title, msg).then(() => { })
+            })
         }
 
         vm.createContact = () => {

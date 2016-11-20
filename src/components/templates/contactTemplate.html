@@ -42,7 +42,10 @@
           </md-menu-content>
         </md-menu>
       </div>
-      <category ng-repeat="c in contact.data.categories" data=c hide-buttons="true" hide-text="true"></category>
+      <div ng-repeat="c in contact.data.categories">
+         <md-button class="md-icon-button btn-remove" style="position: relative;top: 40px;left: 75px;"><md-icon class="material-icons" >clear</md-icon></md-button >
+         <category data=c hide-buttons="true" hide-text="true" <span><input type="button" value="ok"></span>></category>
+      </div>
          <md-card-icon-actions>
             <md-button class="md-icon-button" aria-label="icon" ng-click="contact.favorite(contact.data)">
               <md-icon class="material-icons" >{{ contact.data.starred ? 'favorite' : 'favorite_border' }}</md-icon>

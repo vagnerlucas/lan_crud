@@ -43,7 +43,7 @@
         </md-menu>
       </div>
       <div ng-repeat="c in contact.data.categories" class="category-container">
-          <md-button class="md-icon-button category-remove-btn">
+          <md-button class="md-icon-button category-remove-btn" ng-click="contact.removeCategory(contact.data, c)">
               <md-icon class="material-icons category-remove-icon">highlight_off</md-icon>
           </md-button>
          <category data=c hide-buttons="true" hide-text="true"></category>

@@ -67,6 +67,18 @@
             })
         }
 
+        vm.removeCategory = (contact, category) => {
+            DBService.getSchema('ContactCategory').then((schema) => {
+                const query = lf.op.and(schema.contact_id.eq(contact.id), schema.category_id.eq(category.id))
+                DBService.executeQuery(schema, query).then((toRemove) => {
+                    DBService.del('ContactCategory', toRemove[0].id).then(() => {
+                        contact.categories.splice(contact.categories.indexOf(category), 1)
+                        $scope.$apply()
+                    })
+                })
+            });
+        }
+
         vm.addCategory = (contact, category) => {
 
             DBService.list('ContactCategory').then((list) => {

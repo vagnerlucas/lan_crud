@@ -42,9 +42,11 @@
           </md-menu-content>
         </md-menu>
       </div>
-      <div ng-repeat="c in contact.data.categories" style="position: relative;">
-         <md-button class="md-icon-button btn-remove" style="position: absolute;top: 0;right: -13px;"><md-icon class="material-icons" >clear</md-icon></md-button >
-         <category data=c hide-buttons="true" hide-text="true" <span><input type="button" value="ok"></span>></category>
+      <div ng-repeat="c in contact.data.categories" class="category-container">
+          <md-button class="md-icon-button category-remove-btn">
+              <md-icon class="material-icons category-remove-icon">highlight_off</md-icon>
+          </md-button>
+         <category data=c hide-buttons="true" hide-text="true"></category>
       </div>
          <md-card-icon-actions>
             <md-button class="md-icon-button" aria-label="icon" ng-click="contact.favorite(contact.data)">
@@ -53,7 +55,7 @@
           </md-card-icon-actions>
           <md-card-icon-actions>
             <md-button class="md-icon-button" aria-label="icon" ng-click="contact.remove($event, contact.data.id)">
-              <md-icon class="material-icons" >clear</md-icon>
+              <md-icon class="material-icons">delete</md-icon>
             </md-button>
           </md-card-icon-actions>
     </md-card-actions>

@@ -7,3 +7,38 @@
     background-position: center center;
     background-size: cover;
 }
+
+md-card .category-box {
+    height: 75px;
+    width: 95px;  
+}
+
+.category-container {
+    position: relative;
+}
+
+.category-container .category-image {
+    width: 50px;
+    height: 50px;
+}
+
+.category-remove-btn {
+    position: absolute;
+    top: 0;
+    right: 8px;
+    z-index: 1090;
+}
+
+.md-button.md-icon-button.category-remove-btn {
+    padding: 0;
+}
+
+md-card md-card-actions:not(.layout-column) .md-button.md-icon-button.category-remove-btn:last-of-type {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.category-remove-icon {
+    font-size: 16px;
+    color: chocolate;
+}

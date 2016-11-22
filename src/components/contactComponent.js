@@ -47,10 +47,17 @@
             })
         }
 
+        vm.update = contact => {
+            console.log(contact)
+            // DBService.update('Contact', contact.id, contact)
+			// 	.then(() => { $scope.$apply() })
+        }
+
 		vm.favorite = contact => { 
 			contact.starred = !contact.starred
-			DBService.update('Contact', contact.id, contact)
-				.then(() => {})
+            vm.update(contact)
+			// DBService.update('Contact', contact.id, contact)
+			// 	.then(() => {})
 		}
 
         vm.openCategoryMenu = contact => {

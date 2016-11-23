@@ -135,5 +135,5 @@
 		});
     })
 
-    define(['app', 'services/dbService', 'services/dialogService', 'components/categoryComponent'], function() { return contactController })
+    define(['app', 'services/dbService', 'services/dialogService', 'components/categoryComponent', 'components/editableFieldComponent'], function() { return contactController })
 })()

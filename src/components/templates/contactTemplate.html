@@ -10,19 +10,6 @@
     </md-card-title-media>
     <md-card-title-text>
       <editable-field class="md-headline" field-value="contact.data.name" field-type="text" on-update="contact.update(contact.data)"></editable-field>
-      <!--<div style="position:relative" ng-init="showNameEditOpts=false" ng-dblclick="showNameEditOpts = !showNameEditOpts">
-        <div ng-switch="showNameEditOpts">
-        <div>
-        <input ng-switch-when="true" type="text" ng-model="contact.data.name"><div ng-show="showNameEditOpts">
-          <md-button class="md-icon-button category-remove-btn" ng-click="">
-                <md-icon class="material-icons category-remove-icon">done</md-icon>
-            </md-button>
-        </div>
-        </div>
-        <span ng-switch-default class="md-headline" >{{ contact.data.name }}</span>
-        </div>
-        
-      </div>-->
       <span class="md-subhead description">{{ contact.data.description }} | {{ contact.data.email }}</span>
       <div ng-if="contact.data.birthdate">
         <md-icon>event</md-icon>

@@ -70,6 +70,8 @@
                     })
                 })
 
+                return Promise.resolve(list);
+            }).then(list => {
                 vm.categoriesMenu = list
             })
         }
@@ -80,6 +82,7 @@
                 DBService.executeQuery(schema, query).then((toRemove) => {
                     DBService.del('ContactCategory', toRemove[0].id).then(() => {
                         contact.categories.splice(contact.categories.indexOf(category), 1)
+                        vm.categoriesMenu.push(category)
                         $scope.$apply()
                     })
                 })
@@ -114,6 +117,7 @@
 
                     DBService.add('ContactCategory', contactCategory).then((r) => {
                         contact.categories.push(category)
+                        vm.categoriesMenu.splice(vm.categoriesMenu.indexOf(category),1)
                     })
                 }
             }).then(() => {

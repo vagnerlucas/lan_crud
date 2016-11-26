@@ -9,7 +9,7 @@
       </div>
     </md-card-title-media>
     <md-card-title-text>
-      <editable-field class="md-headline" field-value="contact.data.name" field-type="text" on-update="contact.update(contact.data)"></editable-field>
+      <editable-field class="md-headline" field-value="contact.data.name" field-type="text" on-update="contact.update(contact.data, 'name', value)"></editable-field>
       <span class="md-subhead description">{{ contact.data.description }} | {{ contact.data.email }}</span>
       <div ng-if="contact.data.birthdate">
         <md-icon>event</md-icon>

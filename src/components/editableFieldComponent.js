@@ -1,7 +1,7 @@
 (function() {
     function editableFieldController() {
         //ref: https://docs.angularjs.org/guide/component
-        
+
 		var vm = this
 
         vm.editMode = false
@@ -16,6 +16,7 @@
 
         vm.reset = () => {
             vm.fieldValue = vm.fieldValueCopy
+            vm.editMode = !vm.editMode
         }
 
         vm.$onInit = () => {

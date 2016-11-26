@@ -1,6 +1,6 @@
 (function() {
     function categoryController(DBService, dialogService, $state) {
-		var vm = this;
+		var vm = this
 
 		vm.remove = ($event, id) => {
             const title = 'Are you sure?'

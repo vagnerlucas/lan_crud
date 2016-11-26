@@ -1,6 +1,29 @@
 (function() {
     function editableFieldController() {
-		var vm = this;
+        //ref: https://docs.angularjs.org/guide/component
+        
+		var vm = this
+
+        vm.editMode = false
+
+        vm.handleModeChange = () => {
+            if (vm.editMode) {
+                vm.onUpdate({value: vm.fieldValue})
+                vm.fieldValueCopy = vm.fieldValue
+            }
+            vm.editMode = !vm.editMode
+        }
+
+        vm.reset = () => {
+            vm.fieldValue = vm.fieldValueCopy
+        }
+
+        vm.$onInit = () => {
+            vm.fieldValueCopy = vm.fieldValue
+
+            if (!vm.fieldType)
+                vm.fieldType = 'text'
+        }
     }
 
     require(['app'], function(app) {

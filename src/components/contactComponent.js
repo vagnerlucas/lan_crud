@@ -1,6 +1,6 @@
 (function() {
     function contactController(DBService, dialogService, $state, $scope) {
-		var vm = this;
+		var vm = this
 
 		vm.remove = ($event, id) => {
             const title = 'Are you sure?'

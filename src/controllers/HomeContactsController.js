@@ -73,7 +73,7 @@
             })
         }
 
-        vm.getContactList()
+        vm.$onInit = () => vm.getContactList()
     }
 
     HomeContactsController.$inject = ['$scope', 'DBService', 'dialogService']

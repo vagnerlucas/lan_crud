@@ -122,7 +122,7 @@
             })
         }
 
-        loadCategories()
+        vm.$onInit = () => { loadCategories() }
     }
 
     require(['app'], function(app) {

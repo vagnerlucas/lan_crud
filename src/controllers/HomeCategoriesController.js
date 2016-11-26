@@ -69,7 +69,7 @@
             })
         }
 
-        vm.getCategoryList()
+        vm.$onInit = () => vm.getCategoryList()
     }
 
     HomeCategoriesController.$inject = ['$scope', 'DBService', 'dialogService']

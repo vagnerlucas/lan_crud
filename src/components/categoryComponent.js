@@ -1,6 +1,12 @@
 (function() {
-    function categoryController(DBService, dialogService, $state) {
+    function categoryController(DBService, dialogService, $state, $scope) {
 		var vm = this
+
+        vm.update = (category, prop, value) => {
+            category[prop] = value
+            DBService.update('Category', category.id, category)
+				.then(() => { $scope.$apply() })
+        }
 
 		vm.remove = ($event, id) => {
             const title = 'Are you sure?'
@@ -39,5 +45,5 @@
 		});
     })
 
-    define(['app', 'services/dbService', 'services/dialogService'], function() { return categoryController })
+    define(['app', 'services/dbService', 'services/dialogService', 'components/editableFieldComponent'], function() { return categoryController })
 })()

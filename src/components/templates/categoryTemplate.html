@@ -10,8 +10,10 @@
       </div>
     </md-card-title-media>
     <md-card-title-text ng-if="!category.hideText">
-      <span class="md-headline">{{ category.data.name }}</span>
-      <span class="md-subhead description">{{ category.data.description }}</span>
+      <editable-field class="md-headline editable-md" field-value="category.data.name" field-type="text" on-update="category.update(category.data, 'name', value)"></editable-field>
+      <editable-field class="md-subhead description editable-md" field-value="category.data.description" field-type="text" on-update="category.update(category.data, 'description', value)"></editable-field>
+      <!--<span class="md-headline">{{ category.data.name }}</span>-->
+      <!--<span class="md-subhead description">{{ category.data.description }}</span>-->
     </md-card-title-text>
     <md-card-actions layout="row" layout-align="end center" ng-if="!category.hideButtons">
       <md-card-icon-actions>

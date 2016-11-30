@@ -26,11 +26,14 @@ md-card .category-box {
     position: absolute;
     top: 0;
     right: 8px;
-    z-index: 1090;
 }
 
 .md-button.md-icon-button.category-remove-btn {
     padding: 0;
+}
+
+.editable-description {
+    display: inherit;
 }
 
 md-card md-card-actions:not(.layout-column) .md-button.md-icon-button.category-remove-btn:last-of-type {

@@ -1,9 +1,9 @@
-<div ng-mousemove="" ng-dblclick="">
+<div ng-mouseover="field.showEdit = true" ng-mouseleave="field.showEdit = field.keepEdit" ng-mousemove="" ng-dblclick="">
     <span ng-switch="field.editMode">
         <input ng-switch-when="true" type="{{field.fieldType}}" ng-model="field.fieldValue">
         <span ng-switch-default>{{ field.fieldValue }}</span>
     </span>
-    <md-button class="md-icon-button" ng-click="field.handleModeChange()">
+    <md-button ng-if="field.showEdit" class="md-icon-button" ng-click="field.handleModeChange()">
         <md-icon class="material-icons">{{ field.editMode ? 'done' : 'edit' }}</md-icon>
     </md-button>
     <md-button class="md-icon-button" ng-if="field.editMode" ng-click="field.reset()">

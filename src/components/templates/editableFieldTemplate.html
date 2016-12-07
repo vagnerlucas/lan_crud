@@ -3,10 +3,10 @@
         <input ng-switch-when="true" type="{{field.fieldType}}" ng-model="field.fieldValue">
         <span ng-switch-default>{{ field.fieldValue }}</span>
     </span>
-    <md-button ng-if="field.showEdit" class="md-icon-button" ng-click="field.handleModeChange()">
-        <md-icon class="material-icons">{{ field.editMode ? 'done' : 'edit' }}</md-icon>
+    <md-button md-no-ink="true" ng-if="field.showEdit" class="md-icon-button" ng-click="field.handleModeChange()">
+        <md-icon class="material-icons edit-field">{{ field.editMode ? 'done' : 'edit' }}</md-icon>
     </md-button>
-    <md-button class="md-icon-button" ng-if="field.editMode" ng-click="field.reset()">
-        <md-icon class="material-icons">cancel</md-icon>
+    <md-button md-no-ink="true" class="md-icon-button" ng-if="field.editMode" ng-click="field.reset()">
+        <md-icon class="material-icons edit-field">cancel</md-icon>
     </md-button>
 </div>

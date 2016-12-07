@@ -32,4 +32,4 @@ require.config({
     deps: ['app']
 })
 
-require(['angular-material', 'lovefield', 'app'], function() {})
+require(['lovefield', 'app', 'angular-material'], function() {})

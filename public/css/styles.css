@@ -73,3 +73,7 @@ label {
 label>.md-24 {
     line-height: 48px;
 }
+
+.edit-field {
+    font-size: 18px;
+}

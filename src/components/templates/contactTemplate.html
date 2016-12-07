@@ -36,10 +36,9 @@
             </div>
             <div ng-if="contact.categoriesMenu.length > 0">
             <md-menu-item ng-repeat="c in contact.categoriesMenu track by c.id">
-              <md-button aria-label="{{c.name}}" ng-click="contact.addCategory(contact.data, c)"> 
-                <span >
-                  <img width="32px" height="32px" ng-src="{{c.picture}}"/>
-                </span>
+              <md-button md-no-ink="true" aria-label="{{c.name}}" ng-click="contact.addCategory(contact.data, c)"> 
+                  <img class="category-image-sm" alt="{{c.name}}" width="32px" height="32px" ng-src="{{c.picture}}"/>
+                  {{c.name}}
               </md-button>
             </md-menu-item>
             </div>

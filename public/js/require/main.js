@@ -29,7 +29,7 @@ require.config({
             deps: ['angular', 'fusty-flow-factory']
         }
     },
-    deps: ['app']
+    deps: ['angular', 'app']
 })
 
-require(['lovefield', 'app', 'angular-material'], function() {})
+require(['angular-material', 'lovefield', 'app'], function() {})

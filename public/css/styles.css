@@ -8,6 +8,14 @@
     background-size: cover;
 }
 
+.category-image-sm {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 md-card .category-box {
     height: 75px;
     width: 95px;  

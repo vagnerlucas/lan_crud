@@ -96,7 +96,7 @@
 
                 try {
                     for(let prop in table.K) {
-                        dataBase.update(table).set(table.K[prop], data[table.K[prop].A]).where(table.id.eq(id)).exec()
+                            dataBase.update(table).set(table.K[prop], data[table.K[prop].A]).where(table.id.eq(id)).exec()
                     }
                     return Promise.resolve(true)
                 } catch (err) {

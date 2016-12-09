@@ -2,10 +2,40 @@
     function categoryController(DBService, dialogService, $state, $scope) {
 		var vm = this
 
+        let canUpdate = category => {
+            return DBService.getSchema('Category').then((schema) => {
+                const query =
+                    lf.op.and(schema.id.neq(category.id), schema.name.eq(category.name))
+                return DBService.executeQuery(schema, query).then((check) => {
+                    return check.length === 0
+                })
+            })
+        }
+
         vm.update = (category, prop, value) => {
-            category[prop] = value
-            DBService.update('Category', category.id, category)
-				.then(() => { $scope.$apply() })
+            if (prop === 'name') {
+                let tmpName = category.name
+                category[prop] = value
+                Promise.resolve(canUpdate(category)).then((r) => {
+                    if (!r) {
+                            category[prop] = tmpName
+                            const msg = 'Can\'t update the category name field'
+                            const title = 'Error'
+                            return dialogService.showMessage(title, msg).then(() => {}).then(() => {
+                                return Promise.reject(false)
+                            })
+                    }
+                }).then((s) => {
+                    category[prop] = value
+                    DBService.update('Category', category.id, category)
+                        .then(() => { $scope.$apply() })    
+                })
+            }
+            else {
+                category[prop] = value
+                DBService.update('Category', category.id, category)
+                    .then(() => { $scope.$apply() })
+            }
         }
 
 		vm.remove = ($event, id) => {

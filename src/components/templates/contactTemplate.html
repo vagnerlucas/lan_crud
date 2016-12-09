@@ -10,7 +10,7 @@
     </md-card-title-media>
     <md-card-title-text>
       <editable-field class="md-headline editable-md" field-value="contact.data.name" field-type="text" on-update="contact.update(contact.data, 'name', value)"></editable-field>
-        <editable-field class="md-subhead description editable-md" field-value="contact.data.description" field-type="text" on-update="contact.update(contact.data, 'description', value)"></editable-field>
+        <editable-field class="md-subhead description editable-md" field-value="contact.data.description || 'no description'" field-type="text" on-update="contact.update(contact.data, 'description', value)"></editable-field>
         <editable-field class="md-subhead description editable-md" field-value="contact.data.email" field-type="text" on-update="contact.update(contact.data, 'email', value)"></editable-field>            
       <div ng-if="contact.data.birthdate">
         <md-icon>event</md-icon>

@@ -7,24 +7,25 @@
         vm.editMode = false
 
         vm.handleModeChange = () => {
-            console.log(vm.keepEdit)
+            console.log(vm.showEditButton)
             if (vm.editMode) {
                 vm.onUpdate({value: vm.fieldValue})
                 vm.fieldValueCopy = vm.fieldValue
             }
-            vm.keepEdit = !vm.keepEdit
+            //vm.keepEdit = !vm.keepEdit
+            vm.showEditButton = false
             vm.editMode = !vm.editMode
         }
 
         vm.reset = () => {
             vm.fieldValue = vm.fieldValueCopy
             vm.editMode = !vm.editMode
-            vm.keepEdit = !vm.keepEdit
+            //vm.keepEdit = !vm.keepEdit
         }
 
         vm.$onInit = () => {
             vm.fieldValueCopy = vm.fieldValue
-            vm.showEdit = vm.keepEdit = false
+            vm.showEditButton = false
 
             if (!vm.fieldType)
                 vm.fieldType = 'text'

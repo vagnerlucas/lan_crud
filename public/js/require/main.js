@@ -1,5 +1,5 @@
 require.config({
-    baseUrl: '/lan_crud/src/',
+    baseUrl: '../../src/',
     paths: {
         'angular': ['//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min'],
         'angular-animate': ['//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-animate.min'],

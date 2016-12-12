@@ -26,7 +26,7 @@
             })
         }
 
-        loadCategories = () => {
+        const loadCategories = () => {
             vm.data.categories = []
 
             DBService.getSchema('ContactCategory').then((schema) => {
@@ -48,7 +48,7 @@
             })
         }
 
-        let canUpdateEmail = contact => {
+        const canUpdateEmail = contact => {
             return DBService.getSchema('Contact').then((schema) => {
                 const query =
                     lf.op.and(schema.id.neq(contact.id), schema.email.eq(contact.email))

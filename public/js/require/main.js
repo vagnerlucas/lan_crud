@@ -12,7 +12,7 @@ require.config({
         'ng-flow': ['//cdnjs.cloudflare.com/ajax/libs/ng-flow/2.7.4/ng-flow-standalone.min'],
         // 'fusty-flow': ['//cdnjs.cloudflare.com/ajax/libs/ng-flow/2.7.4/ng-flow.min'],
         'fusty-flow-factory': ['//cdn.jsdelivr.net/fusty-flow.js/1.0.0b3/fusty-flow-factory'],
-        'angularAMD': ['/lan_crud/public/js/angularAMD.min']
+        'angularAMD': ['../public/js/angularAMD.min']
     },
     shim: {
         'angular': { exports: 'angular' },

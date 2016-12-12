@@ -1,0 +1,93 @@
+.user-image, .category-image {
+    display: inline-block;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.category-image-sm {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+md-card .category-box {
+    height: 75px;
+    width: 95px;  
+}
+
+.category-container {
+    position: relative;
+}
+
+.category-container .category-image {
+    width: 50px;
+    height: 50px;
+}
+
+.category-remove-btn {
+    position: absolute;
+    top: 0;
+    right: 8px;
+}
+
+.md-button.md-icon-button.category-remove-btn {
+    padding: 0;
+}
+
+.editable-description {
+    display: inherit;
+}
+
+md-card md-card-actions:not(.layout-column) .md-button.md-icon-button.category-remove-btn:last-of-type {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.category-remove-icon {
+    font-size: 16px;
+    color: chocolate;
+}
+
+.black {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+}
+.md-toolbar-tools {
+    font-weight: 100 !important;
+}
+.file-input {
+    display: none;
+}
+label { 
+    cursor: pointer;
+}
+.material-icons.md-18 {
+    font-size: 18px;
+}
+.material-icons.md-24 {
+    font-size: 24px;
+}
+.material-icons.md-36 {
+    font-size: 36px;
+}
+.material-icons.md-48 {
+    font-size: 48px;
+}
+label>.md-24 {
+    line-height: 48px;
+}
+
+.edit-field-icon {
+    font-size: 18px;
+}
+
+.md-icon-button.edit-button.md-button.ng-scope {
+    height: 24px;
+    min-height: 24px;
+    padding: 0;
+}

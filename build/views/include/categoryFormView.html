@@ -1,0 +1,67 @@
+<md-dialog aria-label="Category info" class="categoryDialog">
+  <form name="categoryForm" ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Category</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="categoryCtrl.cancel()">
+          <md-icon aria-label="Close">close</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+          <div layout-gt-xs="row">
+            <div flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" flow-init="{singleFile:true}" flow-files-added="categoryCtrl.process($files)">
+              <a class="anchor" href="#image-example" name="image-example">
+                <span class="octicon octicon-link"></span>
+              </a>Category picture
+              <div ng-show="!$flow.files.length">
+                <img src="/public/img/no_image.png" />
+              </div>
+              <div ng-show="$flow.files.length">
+                <img flow-img="$flow.files[0]" />
+              </div>
+              <div>
+                <md-button ng-show="!$flow.files.length" class="md-raised md-primary">
+                  <label for="select">Select image</label>
+                </md-button>
+                <input class="file-input" flow-btn id="select" ng-show="!$flow.files.length">
+                <md-button ng-show="$flow.files.length" class="md-raised md-accent">
+                  <label for="change">Change</label>
+                </md-button>
+                <input class="file-input" flow-btn id="change" ng-show="$flow.files.length">
+                <md-button ng-show="$flow.files.length" class="md-raised md-warn">
+                  <label for="cancel">Remove</label>
+                </md-button>
+                <input class="file-input" id="cancel" ng-click="$flow.cancel()" ng-show="$flow.files.length">
+              </div>
+            </div>
+          </div>
+          <div layout-gt-xs="row">
+            <md-input-container class="md-block">
+              <md-icon>bookmark</md-icon>
+              <label>Category Name</label>
+              <input required name="categoryName" ng-model="categoryCtrl.categoryModel.name">
+              <div ng-messages="categoryForm.name.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+              <md-icon>subject</md-icon>
+              <label>Category Description</label>
+              <input name="categoryDescription" ng-model="categoryCtrl.categoryModel.description">
+            </md-input-container>
+          </div>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button ng-click="categoryCtrl.cancel()">
+        Cancel
+      </md-button>
+      <md-button ng-disabled="!categoryForm.$valid" ng-click="categoryCtrl.addCategory(categoryCtrl.categoryModel)">
+        Save
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

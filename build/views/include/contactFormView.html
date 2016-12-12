@@ -1,0 +1,81 @@
+<md-dialog aria-label="Contact info" class="contactDialog">
+  <form name="contactForm" ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Contact</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="contactCtrl.cancel()">
+          <md-icon aria-label="Close">close</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+          <div layout-gt-xs="row">
+            <div flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" flow-init="{singleFile:true}" flow-files-added="contactCtrl.process($files)">
+              <a class="anchor" href="#image-example" name="image-example">
+                <span class="octicon octicon-link"></span>
+              </a>Profile picture
+              <div ng-show="!$flow.files.length">
+                <img src="/public/img/no_image.png" />
+              </div>
+              <div ng-show="$flow.files.length">
+                <img flow-img="$flow.files[0]" />
+              </div>
+              <div>
+                <md-button ng-show="!$flow.files.length" class="md-raised md-primary">
+                  <label for="select">Select image</label>
+                </md-button>
+                <input class="file-input" flow-btn id="select" ng-show="!$flow.files.length">
+                <md-button ng-show="$flow.files.length" class="md-raised md-accent">
+                  <label for="change">Change</label>
+                </md-button>
+                <input class="file-input" flow-btn id="change" ng-show="$flow.files.length">
+                <md-button ng-show="$flow.files.length" class="md-raised md-warn">
+                  <label for="cancel">Remove</label>
+                </md-button>
+                <input class="file-input" id="cancel" ng-click="$flow.cancel()" ng-show="$flow.files.length">
+              </div>
+            </div>
+          </div>
+          <div layout-gt-xs="row">
+            <md-input-container class="md-block">
+              <md-icon>person</md-icon>
+              <label>Contact Name</label>
+              <input required name="contactName" ng-model="contactCtrl.contactModel.name">
+              <div ng-messages="contactForm.name.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+              <md-icon>subject</md-icon>
+              <label>Contact Description</label>
+              <input name="contactDescription" ng-model="contactCtrl.contactModel.description">
+            </md-input-container>
+          </div>
+          <div layout-gt-xs="row">
+            <md-input-container class="md-block">
+              <md-icon>email</md-icon>
+              <label>Email</label>
+              <input required ng-model="contactCtrl.contactModel.email" type="email">
+              <div ng-messages="contactForm.email.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+              <label>Birthday</label>
+              <md-datepicker ng-model="contactCtrl.contactModel.birthdate"></md-datepicker>
+            </md-input-container>
+          </div>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button ng-click="contactCtrl.cancel()">
+        Cancel
+      </md-button>
+      <md-button ng-disabled="!contactForm.$valid" ng-click="contactCtrl.addContact(contactCtrl.contactModel)">
+        Save
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

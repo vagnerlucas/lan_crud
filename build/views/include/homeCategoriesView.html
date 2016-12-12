@@ -1,0 +1,35 @@
+<style>
+  div.overlay {
+    background-color: rgba(241, 233, 241, 0.4);
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+    border: 2px solid rgba(241, 233, 241, 0.4);
+    border-radius: 10px;
+  }
+  div.category-list {
+    position: relative;
+    text-align: center;
+  }
+  .category-box {
+    display: inline-block;
+  }
+  .description {
+    text-align: left
+  }
+</style>
+<md-content class="md-padding">
+  <div class="md-toolbar-tools overlay" layout-align="end center">
+    <h2 class="md-flex">CATEGORIES</h2>
+    <md-button class="md-fab" ng-click="categories.createCategory($event)" aria-label="Add new category">
+      <md-icon aria-label="new">add</md-icon>
+    </md-button>
+  </div>
+  <div ng-if="categories.categoryList.length == 0" layout-align="center center">
+    <h2 class="md-flex">No categories to display</h2>
+  </div>
+  <div class="category-list">
+    <div ng-if="categories.categoryList.length > 0" class="animate-repeat">
+      <category ng-repeat="c in categories.categoryList track by c.id" data=c hide-buttons="false" hide-text="false" ></category>
+    </div>
+  </div>
+</md-content>

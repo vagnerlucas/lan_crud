@@ -1,0 +1,17 @@
+<div ng-mouseover="field.showEditButton = true" ng-mouseleave="field.showEditButton = false" ng-mousemove="" ng-dblclick="">
+    <span ng-switch="field.editMode" >
+        <input   ng-switch-when="true" type="{{field.fieldType}}" ng-model="field.fieldValue">
+        <span  ng-switch-default>{{ field.fieldValue }}</span>
+    </span>
+    <md-button md-no-ink="true" ng-if="field.showEditButton && !field.editMode" class="md-icon-button edit-button" ng-click="field.handleModeChange()" >
+        <md-icon class="material-icons edit-field-icon">edit</md-icon>
+    </md-button>
+    <!--<div class="edit-options" ng-if="field.editMode">-->
+        <md-button md-no-ink="true" class="md-icon-button edit-button" ng-click="field.handleModeChange()"  ng-if="field.editMode">
+            <md-icon class="material-icons edit-field-icon">done</md-icon>
+        </md-button>
+        <md-button md-no-ink="true" class="md-icon-button edit-button" ng-click="field.reset()"  ng-if="field.editMode">
+            <md-icon class="material-icons edit-field-icon">cancel</md-icon>
+        </md-button>
+    <!--</div>-->
+</div>

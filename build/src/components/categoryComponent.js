@@ -15,25 +15,23 @@
 
         vm.update = function (category, prop, value) {
             if (prop === 'name') {
-                (function () {
-                    var tmpName = category.name;
-                    category[prop] = value;
-                    Promise.resolve(canUpdate(category)).then(function (r) {
-                        if (!r) {
-                            category[prop] = tmpName;
-                            var msg = 'Can\'t update the category name field';
-                            var title = 'Error';
-                            return dialogService.showMessage(title, msg).then(function () {}).then(function () {
-                                return Promise.reject(false);
-                            });
-                        }
-                    }).then(function (s) {
-                        category[prop] = value;
-                        DBService.update('Category', category.id, category).then(function () {
-                            $scope.$apply();
+                var tmpName = category.name;
+                category[prop] = value;
+                Promise.resolve(canUpdate(category)).then(function (r) {
+                    if (!r) {
+                        category[prop] = tmpName;
+                        var msg = 'Can\'t update the category name field';
+                        var title = 'Error';
+                        return dialogService.showMessage(title, msg).then(function () {}).then(function () {
+                            return Promise.reject(false);
                         });
+                    }
+                }).then(function (s) {
+                    category[prop] = value;
+                    DBService.update('Category', category.id, category).then(function () {
+                        $scope.$apply();
                     });
-                })();
+                });
             } else {
                 category[prop] = value;
                 DBService.update('Category', category.id, category).then(function () {
@@ -66,7 +64,7 @@
 
     require(['app'], function (app) {
         app.component('category', {
-            templateUrl: '/src/components/templates/categoryTemplate.html',
+            templateUrl: '/lan_crud/src/components/templates/categoryTemplate.html',
             controller: categoryController,
             controllerAs: 'category',
             bindings: {

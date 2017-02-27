@@ -60,24 +60,22 @@
         vm.update = function (contact, prop, value) {
 
             if (prop === 'email') {
-                (function () {
-                    var tmpEmail = contact.email;
-                    contact[prop] = value;
-                    Promise.resolve(canUpdateEmail(contact)).then(function (r) {
-                        if (!r) {
-                            contact[prop] = tmpEmail;
-                            var msg = 'Can\'t update the email field';
-                            var title = 'Error';
-                            return dialogService.showMessage(title, msg).then(function () {}).then(function () {
-                                return Promise.reject(false);
-                            });
-                        }
-                    }).then(function (s) {
-                        DBService.update('Contact', contact.id, contact).then(function () {
-                            $scope.$apply();
+                var tmpEmail = contact.email;
+                contact[prop] = value;
+                Promise.resolve(canUpdateEmail(contact)).then(function (r) {
+                    if (!r) {
+                        contact[prop] = tmpEmail;
+                        var msg = 'Can\'t update the email field';
+                        var title = 'Error';
+                        return dialogService.showMessage(title, msg).then(function () {}).then(function () {
+                            return Promise.reject(false);
                         });
-                    }, function (e) {});
-                })();
+                    }
+                }).then(function (s) {
+                    DBService.update('Contact', contact.id, contact).then(function () {
+                        $scope.$apply();
+                    });
+                }, function (e) {});
             } else {
                 contact[prop] = value;
                 DBService.update('Contact', contact.id, contact).then(function () {
@@ -160,7 +158,7 @@
 
     require(['app'], function (app) {
         app.component('contact', {
-            templateUrl: '/src/components/templates/contactTemplate.html',
+            templateUrl: '/lan_crud/src/components/templates/contactTemplate.html',
             controller: contactController,
             controllerAs: 'contact',
             bindings: {

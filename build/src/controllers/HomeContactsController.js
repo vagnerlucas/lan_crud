@@ -24,7 +24,7 @@
                 controller: function controller() {
                     return dialogCtrl;
                 },
-                templateUrl: '/src/views/include/contactFormView.html',
+                templateUrl: '/lan_crud/src/views/include/contactFormView.html',
                 parent: angular.element(document.body),
                 clickOutsideToClose: false
             }

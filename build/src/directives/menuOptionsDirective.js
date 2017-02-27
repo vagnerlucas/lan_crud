@@ -9,7 +9,7 @@
             scope: {
                 userName: '@userName'
             },
-            templateUrl: '/src/directives/templates/menuOptions.html',
+            templateUrl: '/lan_crud/src/directives/templates/menuOptions.html',
             link: function link(scope, element, attrs) {
                 scope.exitAndDestroy = function ($event) {
                     var title = 'Are you sure?';

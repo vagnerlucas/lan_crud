@@ -32,7 +32,7 @@
 
     require(['app'], function (app) {
         app.component('editableField', {
-            templateUrl: '/src/components/templates/editableFieldTemplate.html',
+            templateUrl: '/lan_crud/src/components/templates/editableFieldTemplate.html',
             controller: editableFieldController,
             controllerAs: 'field',
             bindings: {

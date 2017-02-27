@@ -1,11 +1,12 @@
 (function() {
     'use strict'
 
-    const app = function(angularAMD, angular, uiRouter, material, animate, messages, /* localeBR, */ ngFlow, config, init, dbProvider, dialogService, MenuController) {
+    const app = function(angularAMD, angular, uiRouter, material, animate, messages, /* localeBR, */ ngFlow, config, init, dbProvider, dbService, dialogService, MenuController) {
 
         const a = angular.module('app', ['ui.router', 'ngMaterial', 'ngMessages', 'flow'])
                        .provider('db', dbProvider)
                        .config(config)
+                       .service('DBService', dbService)
                        .service('dialogService', dialogService)
                        .controller('MenuController', MenuController)
                        .run(init)
@@ -24,6 +25,7 @@
             'config', 
             'init', 
             'providers/dbProvider', 
+            'services/dbService',
             'services/dialogService',
             'controllers/MenuController'], app)
 })()

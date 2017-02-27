@@ -22,7 +22,7 @@
                 controller: function controller() {
                     return dialogCtrl;
                 },
-                templateUrl: '/src/views/include/categoryFormView.html',
+                templateUrl: '/lan_crud/src/views/include/categoryFormView.html',
                 parent: angular.element(document.body),
                 clickOutsideToClose: false
             }
